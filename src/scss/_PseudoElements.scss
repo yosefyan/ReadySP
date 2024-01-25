@@ -1,0 +1,10 @@
+.cardSquare {
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  // scale: 1.5;
+  position: absolute;
+  box-shadow: 0 0 1rem black;
+  animation-duration: 4s !important;
+  background: linear-gradient(var(--bg-sky-500-10), var(--bg-orange-500-10));
+}

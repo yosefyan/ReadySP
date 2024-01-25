@@ -1,0 +1,62 @@
+.rotateSpace {
+  animation: rotateSpace 15s ease-in-out infinite;
+}
+
+.slowerAnimation {
+  animation-duration: 15s !important;
+}
+
+.rotateSpace:hover {
+  scale: 0.95;
+}
+
+.upDown {
+  animation: upDown 4s ease-in-out infinite;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.decrease {
+  scale: (0.9);
+  box-shadow: 0 0 1rem rgba(4, 184, 4, 0.568);
+}
+
+@keyframes rotateSpace {
+  0% {
+    transform: rotateX(20deg) rotateY(20deg) rotateZ(-5deg);
+  }
+  50% {
+    transform: rotateX(-10deg) rotateY(-10deg) rotateZ(5deg);
+  }
+  100% {
+    transform: rotateX(20deg) rotateY(20deg) rotateZ(-5deg);
+  }
+}
+
+.rotate {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.up {
+  transform: translateY(-15vh) scale(1) !important;
+  filter: blur(0) !important;
+}

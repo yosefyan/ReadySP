@@ -1,0 +1,13 @@
+export { default as Home } from "./Home/Home";
+export { default as Login } from "./Login/Login";
+export { default as Register } from "./Register/Register";
+export { default as About } from "./About/About";
+export { default as Welcome } from "./Welcome/Welcome";
+export { default as NotFound } from "./NotFound/NotFound";
+export { default as RocketProgress } from "./Register/registerSections/RocketProgress.tsx";
+export { default as RegisterSlider } from "./Register/registerSections/RegisterSlider.tsx";
+export { default as FavoriteCards } from "./FavoriteCards/FavoriteCards.tsx";
+export { default as MyCards } from "./MyCards/MyCards.tsx";
+export { default as Profile } from "./Profile/Profile.tsx";
+export { default as Dashboard } from "./Dashboard/Dashboard.tsx";
+export { default as CreateCard } from "./CreateCard/CreateCard.tsx";
