@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { IconType } from "../../constants/iconsData";
 
 export type TGeneralLogin = {
   email: string;

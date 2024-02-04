@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { centerItem, labelStyles, titleStyles } from "../../../utils/utils";
-import registerNormalizer from "../../Register/registerNormalizer";
-import { TRegisterNormalizer } from "../../../types/PagesTypes/registerTypes";
+import { useContext, useState } from "react";
+import { centerItem, gradient, labelStyles, titleStyles } from "../../../utils/utils";
+import inputsNormalizer from "../../../constants/inputsNormalizer";
+import { TInputsNormalizer } from "../../../types/PagesTypes/registerTypes";
 import { bgColors, textColors } from "../../../constants/colors";
 import { inputStyles } from "../../../utils/utils";
 import { loginData } from "../../../constants/loginData";
@@ -12,13 +12,18 @@ import { MessageComp } from "../../../comps";
 import dynamicPostRequest from "../../../services/dynamicPost";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/ROUTES";
+import toastifyHelper from "../../../helpers/toastifyHelper";
+import { EToastifyStatuses } from "../../../types/helpersTypes";
+import DynamicContext from "../../../store/DynamicContext";
+import serverRoutes from "../../../routes/serverRoutes";
 
 const LoginBox = () => {
   const navigate = useNavigate();
   const { handleBlur } = useJoiMessage();
   const [loginInputs, setLoginInputs] = useState<
-    TRegisterNormalizer["DataForLogin"]
-  >(registerNormalizer().DataForLogin);
+    TInputsNormalizer["LoginClient"]
+  >(inputsNormalizer({}).LoginClient);
+  const { setShouldLogout } = useContext(DynamicContext);
 
   let handleInputs = (key, value) => {
     setLoginInputs((prev) => ({
@@ -33,13 +38,21 @@ const LoginBox = () => {
     e.preventDefault();
     try {
       let { data } = await dynamicPostRequest(
-        "/users/login",
-        registerNormalizer(null, null, email, password).DataForLogin
+        serverRoutes.post.login,
+        inputsNormalizer({email, password}).LoginClient
       );
       localStorage.setItem("token", data);
-    } catch (error) {}
-
-    navigate(ROUTES.HOME);
+      toastifyHelper({
+        status: EToastifyStatuses.success,
+        message: "Welcome back",
+      });
+      navigate(ROUTES.HOME);
+    } catch (error) {
+      toastifyHelper({
+        status: EToastifyStatuses.error,
+        message: "Invalid email or password.",
+      });
+    }
   };
 
   return (
@@ -47,7 +60,11 @@ const LoginBox = () => {
       <h1
         className={`${titleStyles("text-7xl")} ${centerItem(
           loginInputs.email ? "justify-end" : ""
-        )} mx-8 text-white/35 h-[15%]`}>
+        )} mx-8 ${gradient(
+          true,
+          "from-orange-500/50",
+          "to-blue-500/50"
+        )} text-white/35 h-[15%]`}>
         Login
       </h1>
       <form onSubmit={handleSubmit} className="w-[80%] h-[80%] m-auto">

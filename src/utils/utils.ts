@@ -24,18 +24,22 @@ export const inputStyles = (bgColor: string, ...sizes: string[]) => {
   return `${width} ${height} ${borderSize} ${borderColor} ${bgColor}`;
 };
 
-export const triangleStyles = (upsideDown: boolean, height: string, color?: string) => {
-  return `w-0 h-0 border-l-[15rem] border-l-transparent ${
+export const triangleStyles = (
+  upsideDown: boolean,
+  height: string,
+  color?: string
+) => {
+  return `w-0 h-0 border-l-[12rem] border-l-transparent ${
     upsideDown ? "border-b-[7rem]" : `${height || "border-t-[7rem]"} `
   } ${color} ${
     upsideDown ? `border-b-red-500/15` : `border-t-green-500/15`
-  } border-r-[15rem] border-r-transparent`;
+  } border-r-[12rem] border-r-transparent`;
 };
 
 export const buttonStyles = (fontSize?: string) => {
   return `w-[25vw] text-center p-4 ${
     fontSize || "text-4xl"
-  } text-white/25 font-black tracking-widest cursor-pointer select-none`;
+  } text-white/25 font-black tracking-widest cursor-pointer select-none hover:scale-95 transition-all`;
 };
 
 export const titleStyles = (fontSize?: string) => {
@@ -44,3 +48,9 @@ export const titleStyles = (fontSize?: string) => {
 
 export const labelStyles =
   "text-6xl text-white/50 absolute transition-all blur-3xl scale-0 tShadow";
+
+export const shadowEffects = `rotateSpace tShadow bg-sky-500/5 shadow-lg rounded-full shadow-white/25 transition-all`;
+
+export const iconStyles = (size?: string) => {
+  return `${size || "text-5xl"} font-black cursor-pointer`;
+};

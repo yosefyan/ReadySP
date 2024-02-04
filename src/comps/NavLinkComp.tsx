@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { TNavigateLink } from "../types/linkTypes";
-import { centerItem } from "../utils/utils";
+import { centerItem, gradient } from "../utils/utils";
 import { textColors } from "../constants/colors";
 
-const NavLinkComp = ({ to, children }: TNavigateLink) => {
+const NavLinkComp = ({ to, children, filterTab }: TNavigateLink) => {
   return (
     <NavLink
-      className={`${
-        to === "/login" || to === "/register" ? "w-full" : "w-1/4"
-      } rotateSpace tShadow shadow-lg shadow-white/25 p-[2rem] xl:p-[0rem] bg-black/50 rounded-full h-full hover:shadow-sky-500/25 hover:text-blue-500 transition-all ${centerItem()} gap-4`}
+      className={`z-20 w-full h-full p-[2rem] border-b-4 border-sky-500/25 xl:w-[80%] rotateSpace bg-black/90 text-white/50 rounded-lg h-full hover:shadow-sky-500/25 hover:text-blue-500 transition-all ${gradient(
+        true,
+        "from-orange-500/50",
+        "to-blue-500/50"
+      )} ${centerItem()} gap-4`}
       to={to}>
       {({ isActive }) => (
         <p
@@ -16,7 +18,7 @@ const NavLinkComp = ({ to, children }: TNavigateLink) => {
             isActive ? textColors.SECONDARY : ""
           } ${centerItem()} gap-4`}>
           {children}
-          {to === "/" && `home`}
+          {to === "/" && !filterTab && `HOME`}
         </p>
       )}
     </NavLink>

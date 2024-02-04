@@ -1,5 +1,5 @@
 import { TOpeningMessage } from "../types/PagesTypes/homeTypes";
-import { FaCheckCircle, FaCog, FaPaperPlane } from "react-icons/fa";
+import { FaCheckCircle, FaCog, FaPaperPlane } from "../constants/iconsData";
 
 export const mainIdea: TOpeningMessage = {
   titles: ["Ready?", "Set...", "POST!"],

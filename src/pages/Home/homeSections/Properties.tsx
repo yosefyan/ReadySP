@@ -1,11 +1,15 @@
-import { Statuses, Search, Sorting } from "./propertiesSections";
+import { useContext, useEffect } from "react";
+import { Plans, Search, Sorting } from "./propertiesSections";
+import DynamicContext from "../../../store/DynamicContext";
+import useAutoLogin from "../../../hooks/useAutoLogin";
 
 const PropertiesTab = () => {
+ 
   return (
-    <div className="z-20 w-[30%] h-[90vh] sticky top-0">
-      <Statuses />
+    <div className="z-20 w-full lg:w-[30%] h-[90vh]">
+      <Plans />
       <Search />
-      <Sorting/>
+      <Sorting />
     </div>
   );
 };

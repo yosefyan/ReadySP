@@ -1,7 +1,39 @@
 import { TRoutesObject } from "../types/routesTypes";
-import routerData from "../constants/routerData";
+import { Paths } from "../constants/routerData";
+import {
+  Home,
+  Login,
+  Register,
+  About,
+  Welcome,
+  NotFound,
+  CreateCard,
+  FavCards,
+  MyCards,
+  Profile,
+  CRM,
+  EditCard,
+} from "../pages";
 
 const ROUTES: TRoutesObject = {};
+
+export const routerData = {
+  paths: Object.values(Paths),
+  elements: [
+    Home,
+    Login,
+    Register,
+    About,
+    Welcome,
+    NotFound,
+    CreateCard,
+    EditCard,
+    FavCards,
+    MyCards,
+    Profile,
+    CRM,
+  ],
+};
 
 routerData.paths.forEach((path: string, i: number) => {
   ROUTES[routerData.elements[i].name.toUpperCase()] = path;

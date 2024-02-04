@@ -2,17 +2,22 @@ import {
   EGetRequests,
   EPatchRequests,
   EPostRequests,
+  EDeleteRequests,
 } from "../types/routesTypes";
 
-const { cards, getMyCards, getUserById } = EGetRequests,
+const { cards, getMyCards, getUserById, getCardById, getAllUsers } =
+    EGetRequests,
   { login, register, createNewCard } = EPostRequests,
-  { likeCard } = EPatchRequests;
+  { likeCard, changeStatus } = EPatchRequests,
+  { deleteCard, deleteUser } = EDeleteRequests;
 
 const serverRoutes = {
   get: {
     cards,
     getMyCards,
     getUserById,
+    getCardById,
+    getAllUsers,
   },
   post: {
     login,
@@ -21,6 +26,11 @@ const serverRoutes = {
   },
   patch: {
     likeCard,
+    changeStatus
+  },
+  delete: {
+    deleteCard,
+    deleteUser
   },
 };
 

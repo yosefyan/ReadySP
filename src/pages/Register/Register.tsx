@@ -1,22 +1,61 @@
-import { centerItem } from "../../utils/utils";
-import { RocketProgress, RegisterSlider } from "../../pages";
-import RegisterProvider from "../../store/RegisterProvider";
-import DisplayInputs from "./registerSections/DisplayInputs";
-
+import { useContext, useState } from "react";
+import FormComp from "../../comps/formComp/FormComp";
+import inputsNormalizer from "../../constants/inputsNormalizer";
+import DynamicContext from "../../store/DynamicContext";
+import registerData from "../../constants/registerData";
+import ROUTES from "../../routes/ROUTES";
+import serverRoutes from "../../routes/serverRoutes";
+import { TInputsNormalizer } from "../../types/PagesTypes/registerTypes";
 const Register = () => {
+  const [registerInputs, setRegisterInputs] = useState<
+    TInputsNormalizer["RegisterClient"]
+  >(inputsNormalizer({}).RegisterClient);
+  const { checkbox } = useContext(DynamicContext);
+  const {
+    first,
+    middle,
+    last,
+    email,
+    password,
+    phone,
+    url,
+    alt,
+    state,
+    country,
+    city,
+    street,
+    houseNumber,
+    zip,
+  } = registerInputs;
+
   return (
-    <RegisterProvider>
-      <div
-        className={`${centerItem()} overflow-hidden flex-col xl:flex-row h-[90%] p-4 overflow-hidden`}>
-        <div className={`w-[80%] xl:w-[60%] lg:w-full h-full ${centerItem()}`}>
-          <RegisterSlider />
-          <RocketProgress />
-        </div>
-        <div className="lg:w-[40%] hidden xl:block lg:h-full w-full h-[100vh]">
-          <DisplayInputs />
-        </div>
-      </div>
-    </RegisterProvider>
+    <FormComp
+      Icons={registerData.Icons}
+      subTitleInfo={{
+        title:"Register",
+        text: "Own an account?",
+        navigate: ROUTES.LOGIN,
+      }}
+      requiredInputs={registerData.regRequiredInputs}
+      submitData={{ message: "Successfully registered.", navigate: ROUTES.LOGIN }}
+      serverStructure={
+        inputsNormalizer({
+          nameData: { first, middle, last },
+          phone,
+          email,
+          password,
+          imageData: { url, alt },
+          addressData: { state, country, city, street, houseNumber, zip },
+          checkbox,
+        }).RegisterServer
+      }
+      reqType={'POST'}
+      inputsNormalizer={inputsNormalizer}
+      inputsState={registerInputs}
+      setInputsState={setRegisterInputs}
+      currentData={registerData}
+      reqUrl={serverRoutes.post.register}
+    />
   );
 };
 

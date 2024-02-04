@@ -1,8 +1,7 @@
 import { createContext } from "react";
-import { TRegisterProvider } from "../types/PagesTypes/registerTypes";
-import { THomeProvider } from "../types/PagesTypes/homeTypes";
+import { TMainProvider } from "../types/PagesTypes/registerTypes";
 import { TAuthProvider } from "../types/componentTypes";
 
-const DynamicContext = createContext<TRegisterProvider | THomeProvider | TAuthProvider>(null);
+const DynamicContext = createContext<TMainProvider | TAuthProvider>(null);
 
 export default DynamicContext;

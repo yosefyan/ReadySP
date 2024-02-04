@@ -1,8 +1,21 @@
-import { FaSortAlphaDown } from "react-icons/fa";
-import { LuCalendarClock } from "react-icons/lu";
-import { MdCancel, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import { GoNumber } from "react-icons/go";
-import { FaAddressBook, FaIdCard } from "react-icons/fa";
+import {
+  LuCalendarClock,
+  MdNavigateBefore,
+  MdNavigateNext,
+  MdBusinessCenter,
+  GoNumber,
+  FaAddressBook,
+  FaIdCard,
+  FaRandom,
+  FaSortAlphaDown,
+  FaGhost,
+  BsPersonFill,
+  BsPersonLock,
+  FaPhone,
+  FaHeart,
+  MdDelete,
+  BsPencil,
+} from "./iconsData";
 
 export const homeData = {
   portalData: {
@@ -17,13 +30,20 @@ export const homeData = {
     ],
   },
   properties: {
-    userPlans: ["Ghost", "Normal", "Business"],
-    sortButtons: ["Sort by date", "Cancel", "Sort by title"],
-    buttonsIcons: [LuCalendarClock, MdCancel, FaSortAlphaDown],
+    userPlans: ["Ghost", "Normal", "Business", "Admin"],
+    icons: [FaGhost, BsPersonFill, MdBusinessCenter, BsPersonLock],
+    sortButtons: ["Sort by date", "Sort by random", "Sort by title"],
+    buttonsIcons: [LuCalendarClock, FaRandom, FaSortAlphaDown],
   },
   ulData: {
     titles: ["phone", "address", "Card Number"],
     icons: [GoNumber, FaAddressBook, FaIdCard],
     arrowIcons: [MdNavigateBefore, MdNavigateNext],
+  },
+  roleIcons: {
+    Ghost: [FaPhone],
+    Normal: [FaPhone, FaHeart],
+    Business: [FaPhone, FaHeart, BsPencil, MdDelete],
+    Admin: [FaPhone, FaHeart, BsPencil, MdDelete],
   },
 };

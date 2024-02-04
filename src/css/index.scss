@@ -3,6 +3,19 @@
 @import "../scss/_Typography";
 @import "../scss/_PseudoElements";
 @import "../scss/Scrollbar";
+@import "../scss/Mixin";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .cardRotate1 {
+    transform: rotateX(20deg) rotateZ(-20deg);
+    box-shadow: -1.5rem 2rem 1rem #000000bd;
+  }
+  .cardRotate2 {
+    transform: rotateX(-20deg) rotateZ(20deg);
+    box-shadow: 1.5rem 2rem 1rem #000000bd;
+  }
+}

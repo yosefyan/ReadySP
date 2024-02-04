@@ -1,5 +1,5 @@
 import { textColors } from "../../../../constants/colors";
-import { buttonStyles, centerItem, titleStyles } from "../../../../utils/utils";
+import { buttonStyles, centerItem, gradient, titleStyles } from "../../../../utils/utils";
 import { homeData } from "../../../../constants/homeData";
 import useReplaceWords from "../../../../hooks/useReplaceWords";
 import { memo, useContext } from "react";
@@ -7,19 +7,22 @@ import DynamicContext from "../../../../store/DynamicContext";
 
 const Sorting = () => {
   const { word, setWord } = useReplaceWords();
-  const { dispatch, cards } = useContext(DynamicContext);
+  const { dispatch, data } = useContext(DynamicContext);
 
   const handleSortClick = (i: number) => {
     dispatch({
-      type: i === 0 ? "SORT_DATE" : i === 1 ? "CANCEL" : "SORT_TITLE",
+      type: i === 0 ? "SORT_DATE" : i === 1 ? "SORT_RANDOM" : "SORT_TITLE",
+      payload: { data },
     });
   };
   return (
     <div className={`h-[30%] bg-orange-500/5 ${centerItem()} flex-col`}>
       <h1
-        className={`${titleStyles("text-5xl")} h-[40%] ${centerItem()} ${
-          textColors.SECONDARY
-        }`}>
+        className={`${titleStyles("text-5xl")} ${gradient(
+          true,
+          "from-blue-500/50",
+          "to-orange-500/50"
+        )} h-[40%] ${centerItem()} ${textColors.SECONDARY}`}>
         {word || "Sorting"}
       </h1>
       <div className={`w-[80%] h-[60%] gap-4 ${centerItem()}`}>

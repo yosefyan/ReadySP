@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { IconType } from "../../constants/iconsData";
 
 export type TName = {
   first: string;
@@ -33,43 +33,29 @@ export type TRegisterServer = TSensitive & {
 };
 
 export type TPermission = {
-  business: boolean;
+  checkbox: boolean;
 };
 
-export type TRegisterNormalizer = {
-  DataForLogin?: {
-    email: string,
-    password: string
-  },
-  DataForClient: Record<
+
+export type TInputsNormalizer = TPermission & {
+  LoginClient?: {
+    email: string;
+    password: string;
+  };
+  RegisterClient: Record<
     | keyof TImage
     | keyof TAddress
     | keyof TName
     | keyof TPermission
     | keyof TSensitive,
-    string | boolean
+    string
   >;
-  DataForRegister: TRegisterServer;
+  RegisterServer: TRegisterServer;
 };
 
 export type TRegisterData = {
   Icons: IconType[];
   Buttons: IconType[];
-};
-
-export type TRegisterProvider = {
-  percentage: number;
-  setPercentage: React.Dispatch<React.SetStateAction<number>>;
-  registerInputs: TRegisterNormalizer["DataForClient"];
-  setRegisterInputs: React.Dispatch<
-    React.SetStateAction<TRegisterNormalizer["DataForClient"]>
-  >;
-  checkbox: boolean;
-  setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
-  scrollAmount: number;
-  setScrollAmount: React.Dispatch<React.SetStateAction<number>>;
-  heightContainer: any;
-  inputRefs: any;
 };
 
 export type TRegisterValidation = {
@@ -78,6 +64,6 @@ export type TRegisterValidation = {
   max: number;
   regexType: string;
   isText: boolean;
-  isRequired?: boolean
-  validate?: any
+  isRequired?: boolean;
+  validate?: any;
 };

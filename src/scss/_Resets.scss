@@ -13,3 +13,7 @@ body {
   --bg-orange-500-10: rgba(249, 116, 22, 0.075);
   --bg-green-800-10: rgba(34, 197, 94, 0.212);
 }
+
+canvas {
+  filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.596));
+}

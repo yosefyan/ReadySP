@@ -7,11 +7,3 @@ export type TOpeningMessage = {
   tColors: string[];
   Icons: string[];
 };
-
-export type THomeProvider = {
-  state: unknown;
-  dispatch: React.DispatchWithoutAction;
-  searchInput: string;
-  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
-  cards: [];
-};

@@ -1,8 +1,12 @@
-import { FaRocket, FaSpaceAwesome } from "react-icons/fa6";
-import { FaSpaceShuttle } from "react-icons/fa";
-import { GiSpaceship } from "react-icons/gi";
+import {
+  FaRocket,
+  FaSpaceAwesome,
+  FaSpaceShuttle,
+  GiSpaceship,
+  MdAlternateEmail,
+  MdOutlinePassword,
+} from "../constants/iconsData";
 import { TLoginData } from "../types/PagesTypes/loginTypes";
-import { MdAlternateEmail, MdOutlinePassword } from "react-icons/md";
 
 export const loginData: TLoginData = {
   roadData: {

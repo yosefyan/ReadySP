@@ -1,3 +1,5 @@
+@import "./Mixin";
+
 .rotateSpace {
   animation: rotateSpace 15s ease-in-out infinite;
 }
@@ -12,18 +14,11 @@
 
 .upDown {
   animation: upDown 4s ease-in-out infinite;
+  @include Move(0, 1vh, Y, upDown);
 }
-
-@keyframes upDown {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(2vh);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.downUp {
+  animation: downUp 4s ease-in-out infinite;
+  @include Move(1vh, 0, Y, downUp);
 }
 
 .decrease {
@@ -33,13 +28,13 @@
 
 @keyframes rotateSpace {
   0% {
-    transform: rotateX(20deg) rotateY(20deg) rotateZ(-5deg);
+    transform: rotateX(10deg) rotateY(10deg) rotateZ(-5deg);
   }
   50% {
-    transform: rotateX(-10deg) rotateY(-10deg) rotateZ(5deg);
+    transform: rotateX(0) rotateY(0) rotateZ(0);
   }
   100% {
-    transform: rotateX(20deg) rotateY(20deg) rotateZ(-5deg);
+    transform: rotateX(10deg) rotateY(10deg) rotateZ(-5deg);
   }
 }
 
@@ -59,4 +54,39 @@
 .up {
   transform: translateY(-15vh) scale(1) !important;
   filter: blur(0) !important;
+}
+
+.forwardsDrive {
+  animation: forwardsDrive 80s ease-in-out infinite;
+  @include Move(-200vh, 200vh, Y, forwardsDrive);
+}
+.backwardsDrive {
+  animation: backwardsDrive 80s ease-in-out infinite;
+  @include Move(200vh, -200vh, Y, backwardsDrive);
+}
+
+.rotateText {
+  transform: rotateX(60deg);
+}
+
+.slow {
+  animation-duration: 10s;
+}
+.slower {
+  animation-duration: 25s !important;
+}
+
+@keyframes fly {
+  0% {
+    translate: 0;
+  }
+  50% {
+    translate: 0 -1.5vh;
+  }
+  100% {
+    translate: 0;
+  }
+}
+.fly {
+  animation: fly 3s ease-in-out infinite;
 }

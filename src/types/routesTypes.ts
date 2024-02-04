@@ -20,6 +20,8 @@ export enum EGetRequests {
   cards = "/cards",
   getMyCards = "/cards/my-cards",
   getUserById = "/users/",
+  getCardById = "/cards/",
+  getAllUsers = "/users/",
 }
 
 export enum EPostRequests {
@@ -29,5 +31,11 @@ export enum EPostRequests {
 }
 
 export enum EPatchRequests {
-  likeCard = '/cards/'
+  likeCard = "/cards/",
+  changeStatus = "/users/"
+}
+
+export enum EDeleteRequests {
+  deleteCard = "/cards/",
+  deleteUser = "/users/",
 }

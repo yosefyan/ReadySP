@@ -1,3 +1,5 @@
+@import "./Mixin";
+
 .cardSquare {
   width: 100vw;
   height: 100%;
@@ -7,4 +9,37 @@
   box-shadow: 0 0 1rem black;
   animation-duration: 4s !important;
   background: linear-gradient(var(--bg-sky-500-10), var(--bg-orange-500-10));
+}
+
+.tvBox {
+  transform-style: preserve-3d;
+}
+
+.tvBox::before,
+.tvBox::after {
+  content: "";
+  width: 40vw;
+  height: 70vh;
+  overflow: hidden;
+  filter: blur(1rem) drop-shadow(0 0 6rem cyan);
+  position: absolute;
+  z-index: -50;
+  border-radius: 500px;
+  display: inherit;
+  transform-origin: center;
+  background: transparent;
+}
+
+.tvBox::before {
+  // right: -25%;
+  // bottom: 25%;
+  animation: rightCircle 25s linear infinite;
+  @include Circle(33deg, rightCircle);
+}
+
+.tvBox::after {
+  // left: -25%;
+  // top: -40%;
+  animation: leftCircle 25s linear infinite;
+  @include Circle(-33deg, leftCircle);
 }

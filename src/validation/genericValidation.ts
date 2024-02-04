@@ -1,16 +1,13 @@
 import Joi from "joi";
 import { TRegisterValidation } from "../types/PagesTypes/registerTypes";
+import registerData from "../constants/registerData";
+import createCardData from "../constants/createCardData";
 
 export const genericValidation = (
   value: string,
-  {
-    whatOpening = "string",
-    min,
-    max,
-    regexType = "unknown",
-    isText = true,
-    isRequired = false,
-  }: TRegisterValidation
+  { whatOpening = "string", min, max, regexType = "unknown", isText = true, isRequired = true },
+  key,
+  requiredInputs = createCardData.createRequiredInputs
 ) => {
   let neededRegex =
     regexType === "email"
@@ -31,14 +28,12 @@ export const genericValidation = (
   let booleanOpening = Joi.boolean();
 
   let neededType = isText ? "letters" : "numbers";
-
   const Schema = Joi.object({
-    genericFormat: (neededOpening
-      .min(min || 2)
+    Input: (neededOpening
+      .min(min || isRequired ? 2 : 0)
       .max(max || 256)
       .messages({
         "string.base": `Must contain ${neededType}.`,
-        "string.empty": "Field is required.",
         "string.min": `Must have at least {#limit} ${neededType}.`,
         "string.max": `Must not exceed {#limit} ${neededType}.`,
         "string.pattern.base": `Must only contain ${neededType} ${
@@ -47,8 +42,10 @@ export const genericValidation = (
             : "- and be a valid email."
         }`,
         "any.required": "Field is required.",
-      }) || booleanOpening)[isRequired ? "required" : "optional"](),
+      }) || booleanOpening)[
+      isRequired ? "required" : "optional"
+    ](),
   });
 
-  return Schema.validate({ genericFormat: value });
+  return Schema.validate({ Input: isRequired ? value : 'Leaving as empty '});
 };

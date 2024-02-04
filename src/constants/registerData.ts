@@ -10,25 +10,24 @@ import {
   MdNavigateBefore,
   MdNavigateNext,
   MdBusinessCenter,
-} from "react-icons/md";
-import {
   PiNumberOneBold,
   PiNumberTwoBold,
   PiNumberThreeBold,
-} from "react-icons/pi";
-import { TbNumbers } from "react-icons/tb";
-import { BsSkipBackwardFill, BsSkipForwardFill } from "react-icons/bs";
-import { FaPhone } from "react-icons/fa";
-import { FaEarthAmericas } from "react-icons/fa6";
+  TbNumbers,
+  BsSkipBackwardFill,
+  BsSkipForwardFill,
+  FaPhone,
+  FaEarthAmericas,
+} from "../constants/iconsData";
 
 const registerData = {
   Icons: [
     PiNumberOneBold,
     PiNumberTwoBold,
     PiNumberThreeBold,
+    FaPhone,
     MdAlternateEmail,
     MdOutlinePassword,
-    FaPhone,
     MdLink,
     MdDescription,
     MdLocationOn,
@@ -62,7 +61,7 @@ const registerData = {
       "bg-blue-800",
     ],
   },
-  requiredInputs: [
+  regRequiredInputs: [
     "first",
     "last",
     "email",
@@ -78,12 +77,10 @@ const registerData = {
     email: {
       min: 6,
       regexType: "email",
-      isRequired: true,
     },
     password: {
       min: 8,
       regexType: "password",
-      isRequired: true,
     },
     phone: {
       min: 7,
@@ -91,9 +88,9 @@ const registerData = {
     },
     url: {
       max: 2048,
+      isRequired: false,
     },
     zip: {
-      isRequired: true,
       whatOpening: "number",
     },
     houseNumber: {
@@ -102,7 +99,16 @@ const registerData = {
     isBusiness: {
       whatOpening: undefined,
     },
-    otherInputs: ["first", "last", "country", "city", "street", "houseNumber"],
+    middle: {
+      isRequired: false,
+    },
+    alt: {
+      isRequired: false,
+    },
+    state: {
+       isRequired: false
+    },
+    otherInputs: ["first", "last", "country", "city", "street"],
   },
 };
 
