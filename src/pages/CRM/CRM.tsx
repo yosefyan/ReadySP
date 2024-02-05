@@ -9,11 +9,6 @@ import DynamicContext from "../../store/DynamicContext";
 const CRM = () => {
   const { sure } = useContext(DynamicContext);
   
-  // LEFT STUFF TO DO -
-  // 1. 
-  // 2.
-  // 3.
-  // 4.FIX TYPESCRIPT
   return (
     <div className="w-full h-[90%] flex flex-col-reverse lg:flex-row relative">
       <div

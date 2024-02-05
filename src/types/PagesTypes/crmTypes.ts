@@ -1,5 +1,4 @@
 export type TUserSearchResult = {
-  
     name: {
       first: string;
       middle: string;

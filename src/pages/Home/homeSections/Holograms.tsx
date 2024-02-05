@@ -88,19 +88,11 @@ const Holograms = ({
       setSure({
         closed: false,
         data: {
-          req: 'delete',
+          req: "delete",
           id: cardId,
-          route: serverRoutes.delete.deleteCard
-        }
-      })
-      //  await dynamicDelete(
-      //   `${serverRoutes.delete.deleteCard}${cardId}`
-      // );
-      // toastifyHelper({
-      //   status: EToastifyStatuses.success,
-      //   message: "Deleted card successfully.",
-      // });
-      
+          route: serverRoutes.delete.deleteCard,
+        },
+      });
     } catch (error) {
       toastifyHelper({
         status: EToastifyStatuses.error,

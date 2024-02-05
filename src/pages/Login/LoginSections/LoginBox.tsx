@@ -19,7 +19,6 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../../../routes/ROUTES";
 import toastifyHelper from "../../../helpers/toastifyHelper";
 import { EToastifyStatuses } from "../../../types/helpersTypes";
-import DynamicContext from "../../../store/DynamicContext";
 import serverRoutes from "../../../routes/serverRoutes";
 
 const LoginBox = () => {
@@ -42,7 +41,13 @@ const LoginBox = () => {
     e.preventDefault();
     try {
       const blockExpiration = localStorage.getItem("blockExpiration");
-      if (blockExpiration && new Date(blockExpiration) > new Date()) {
+       let emailToken = localStorage.getItem("blackList");
+      if (
+        blockExpiration &&
+        emailToken &&
+        emailToken === email &&
+        new Date(blockExpiration) > new Date()
+      ) {
         toastifyHelper({
           status: EToastifyStatuses.error,
           message: "Your account is blocked. Please try again later.",
@@ -50,7 +55,7 @@ const LoginBox = () => {
         return;
       }
       if (attempts < 3) {
-        let emailToken = localStorage.getItem("blackList");
+       
         if (emailToken && emailToken === email) {
           toastifyHelper({
             status: EToastifyStatuses.error,

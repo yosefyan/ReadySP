@@ -1,6 +1,5 @@
 import { centerItem } from "../../utils/utils";
 import { RocketProgress, RegisterSlider } from "../../comps";
-// import RegisterProvider from "../../store/RegisterProvider";
 import DisplayInputs from "./formSections/DisplayInputs";
 import { TFormComp } from "../../types/componentTypes";
 

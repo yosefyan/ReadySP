@@ -42,7 +42,6 @@ const useAutoLogin = () => {
                   ? "Business"
                   : "Ghost",
             });
-            // setFinishedLoading(true);
           }
         } catch (error) {
           setFinishedLoading(true);

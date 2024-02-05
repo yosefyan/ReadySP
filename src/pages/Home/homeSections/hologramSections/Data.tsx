@@ -147,7 +147,6 @@ const Data = ({
                   } else if (index === 1) {
                     handleLikeCard(card?._id, card, i);
                   } else if (index === 3) {
-                    //yosef checkpoint
                     handleDeleteCard(card?._id, card);
                   }
                 }}

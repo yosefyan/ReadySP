@@ -27,7 +27,6 @@ const CustomSearch: React.FC<TCustomSearch> = ({
     target,
   }: React.ChangeEvent<HTMLInputElement>) => {
     const searchInput = target.value;
-    console.log(searchInput)
     if (!isFiltered && !userSearch) {
       dispatch({
         type: "SEARCH",

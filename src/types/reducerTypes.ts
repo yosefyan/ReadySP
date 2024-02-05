@@ -5,7 +5,6 @@ export type TInitialReducerData = {
   usersData: any[];
 };
 
-//usersData
 export type TSortedTitle = {
   title: string;
   name: {
@@ -16,19 +15,16 @@ export type TSortedTitle = {
   isBusiness: boolean;
 };
 
-//searchResult
 export type TUpdatedCard = {
   _id: string;
   createdAt: string;
 };
 
-//data
 export type TDataReducer = {
   likes: string[];
   title: string;
 };
 
-//usersSearchResult
 export type TUsersSearchResult = {
   createdAt: string;
 };

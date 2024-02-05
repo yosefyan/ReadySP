@@ -13,7 +13,6 @@ const HomeProvider = ({ children }: TTypicalChildren) => {
     homeReducer,
     homeInitialState
   );
-  // const [searchInput, setSearchInput]
   const [checkbox, setCheckBox] = useState<boolean>(false);
   const heightContainer = useRef<HTMLFormElement>(null);
   const [percentage, setPercentage] = useState<number>(0);
@@ -29,14 +28,8 @@ const HomeProvider = ({ children }: TTypicalChildren) => {
     data: null,
   });
 
-  // const { data, searchResult, userSearchResult, userData } = state;
-
   const contextValue = {
     ...state,
-    // data,.
-    // searchResult,
-    // userSearchResult,
-    // userData,
     dispatch,
     checkbox,
     setCheckBox,
