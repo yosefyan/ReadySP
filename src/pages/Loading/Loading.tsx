@@ -1,8 +1,7 @@
-import React from 'react'
-import { centerItem, titleStyles } from '../../utils/utils'
-import { textColors } from '../../constants/colors';
+import { centerItem, titleStyles } from "../../utils/utils";
+import { textColors } from "../../constants/colors";
 
-const Loading = ({searchInput}) => {
+const Loading = ({ searchInput }: { searchInput?: string }) => {
   return (
     <h1
       className={`${titleStyles(
@@ -20,6 +19,6 @@ const Loading = ({searchInput}) => {
       </span>
     </h1>
   );
-}
+};
 
-export default Loading
+export default Loading;

@@ -1,12 +1,13 @@
-import {  ReactNode } from "react";
+import { ReactNode } from "react";
 import {
   TName,
   TAddress,
   TSensitive,
   TPermission,
   TImage,
-} from "./PagesTypes/registerTypes";
+} from "./PagesTypes/inputsNormalizerTypes";
 import { IconTree, IconType } from "react-icons";
+import { TCreateCardData } from "./constantsTypes";
 
 export type TTypicalChildren = {
   children?: ReactNode;
@@ -55,42 +56,49 @@ export type TFormComp = {
     message: string;
     navigate: string;
   };
+  currentData: TCreateCardData;
   subTitleInfo: {
     title: string;
     text: string;
     navigate: string;
   };
-  reqType: string;
+  setInputsState: React.Dispatch<React.SetStateAction<any>>;
+  reqUrl: string;
+  reqType: {
+    request: string;
+    id: string;
+  };
+
+  inputsNormalizer: {};
+  inputsState: {
+    [key: string]: string | {};
+  };
+  serverStructure: {
+    [key: string]: string | {};
+  };
   requiredInputs: string[];
-  // serverStructure: {
-  //   [key: string]: string | boolean | number | TImage;
-  //   phone: string;
-  //   email: string;
-  //   password: string;
-  // };
   isMap: boolean;
 };
 
-
 export type TTvComp = {
-  on:boolean
-}
+  on: boolean;
+};
 
 export type TCardComp = {
   rotate: string;
   title: string;
   which: string;
-}
+};
 
 export type TUserReview = {
-  person: IconType
+  person: IconType;
   review: string;
   sale: string;
-}
+};
 
 export type TCustomSearch = {
-  [key: string]: string | boolean
-}
+  [key: string]: string | boolean;
+};
 
 export type TEyePassword = {
   hidePassword: boolean;
@@ -100,13 +108,26 @@ export type TEyePassword = {
 export type TLaser = {
   shouldRotate: boolean;
   direction: string;
-  colorLaser: string
-}
+  colorLaser: string;
+};
 
 export type TSortedData = {
   [key: string]: number;
-}
+};
 
 export type TMessageComp = {
-  [key:string]: string
-}
+  [key: string]: string;
+};
+
+export type TMainSquare = {
+  inputsState: { [key: string]: string | {} };
+  value: string | {};
+  currentData: TCreateCardData;
+  i: number;
+  Icon: IconType;
+  addName: string;
+  theKey: string;
+  requiredInputs: string[];
+  setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
+  setInputsState: React.Dispatch<React.SetStateAction<string>>;
+};

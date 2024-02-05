@@ -1,6 +1,7 @@
+import { TCrmData } from "../types/constantsTypes";
 import { FaUser, BsMoonStarsFill } from "./iconsData";
 
-const crmData = {
+const crmData: TCrmData = {
   titles: ["Users", "Role"],
   icons: [FaUser, BsMoonStarsFill],
 };

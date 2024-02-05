@@ -6,7 +6,7 @@ import ROUTES from "../../routes/ROUTES";
 import serverRoutes from "../../routes/serverRoutes";
 
 const CreateCard = () => {
-  const [cardCreate, setCardCreate] = useState({
+  const [cardCreate, setCardCreate] = useState<{ [key: string]: string }>({
     title: "",
     subtitle: "",
     description: "",
@@ -44,7 +44,7 @@ const CreateCard = () => {
     <FormComp
       Icons={createCardData.Icons}
       subTitleInfo={{
-        title: 'Create card',
+        title: "Create card",
         text: "Own a card?",
         navigate: ROUTES.MYCARDS,
       }}
@@ -70,7 +70,7 @@ const CreateCard = () => {
       setInputsState={setCardCreate}
       currentData={createCardData}
       reqUrl={serverRoutes.post.createNewCard}
-      reqType={'POST'}
+      reqType={"POST"}
     />
   );
 };

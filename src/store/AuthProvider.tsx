@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import DynamicContext from "./DynamicContext";
 import { TTypicalChildren } from "../types/componentTypes";
+import { TTokenDataContext } from "../types/contextTypes";
 
 const AuthProvider = ({ children }: TTypicalChildren) => {
-  const [tokenData, setTokenData] = useState({
+  const [tokenData, setTokenData] = useState<TTokenDataContext>({
     empty: true,
     user: null,
     role: "Ghost",

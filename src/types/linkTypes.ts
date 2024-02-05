@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { IconType } from "react-icons";
 
 export type TNavigateLink = {
   to: string;

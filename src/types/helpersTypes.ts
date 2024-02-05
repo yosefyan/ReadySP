@@ -18,3 +18,10 @@ export type TToastifyHelper = {
 export type ToastFunctions = {
   [key: string]: (message: string, options?: ToastOptions) => React.ReactNode;
 };
+
+export type TGenericValidation = {
+  value: string,
+  
+    [key: string]: string | number | boolean
+  
+}

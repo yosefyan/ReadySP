@@ -5,10 +5,11 @@ import DynamicRoleMiddleware from "../middlewares/DynamicRoleMiddleware";
 import { defaultData } from "../layout/linksLayout";
 import DynamicContext from "../store/DynamicContext";
 import { linksMapping } from "../comps/DetermineLinks";
+import { TMainProvider } from "../types/contextTypes";
 
 const Routes = () => {
-  const { tokenData } = useContext(DynamicContext);
-  const routeLogic = (Comp) => {
+  const { tokenData } = useContext<TMainProvider>(DynamicContext);
+  const routeLogic = (Comp: React.ComponentType) => {
     if (
       linksMapping[tokenData.role][0].comp.includes(Comp.name) ||
       defaultData.defaultLinks[0].comp.includes(Comp.name) ||

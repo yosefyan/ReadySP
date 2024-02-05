@@ -11,12 +11,13 @@ const SpaceshipContainer = ({
   i: number;
 }) => {
   const Spaceship: React.ComponentType = loginData.roadData.units[3];
-  const rocketMovement = "opacity-100 top-[10vh] rotate-180 -z-20";
+  const rocketMovement =
+    "opacity-100 top-[10vh] rotate-180 -z-20 transition-all";
   return (
     <div
       className={`absolute  ${
         shouldShow === i ? rocketMovement : "opacity-75 z-20 top-[65vh]"
-      } ${centerItem()} transition-all flex-col`}>
+      } ${centerItem()}  flex-col`}>
       <div
         className={`blur-md ${triangleStyles(
           false,

@@ -4,10 +4,11 @@ import { jwtDecode } from "jwt-decode";
 import { TTokenData } from "../types/customHooksTypes";
 import serverRoutes from "../routes/serverRoutes";
 import DynamicContext from "../store/DynamicContext";
+import { TMainProvider } from "../types/contextTypes";
 
 const useAutoLogin = () => {
   const [finishedLoading, setFinishedLoading] = useState<boolean>(false);
-  const { setTokenData } = useContext(DynamicContext);
+  const { setTokenData } = useContext<TMainProvider>(DynamicContext);
 
   let token = localStorage.getItem("token");
   useEffect(() => {

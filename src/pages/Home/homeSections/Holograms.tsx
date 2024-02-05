@@ -70,9 +70,7 @@ const Holograms = ({
       });
       toastifyHelper({
         status: EToastifyStatuses.success,
-        message: `${
-          shouldLike.isLiked ? "Disliked" : "Liked"
-        } card successfully.`,
+        message: `Success!`,
       });
       shouldFilter &&
         dispatch({ type: "FAV_CARD", payload: { data: card, cardId } });

@@ -1,4 +1,6 @@
-export const homeReducer = (state, action) => {
+import { TDataReducer, TInitialReducerData, TPayload, TSortedTitle, TUpdatedCard, TUsersSearchResult } from "../types/reducerTypes";
+
+export const homeReducer = (state: TInitialReducerData, action: TPayload) => {
   const {
     searchInput,
     data,
@@ -17,7 +19,7 @@ export const homeReducer = (state, action) => {
     case "SET_USERS":
       return {
         ...state,
-        usersData: usersData.map((user) => ({
+        usersData: usersData.map((user: TSortedTitle) => ({
           ...user,
           role: user.isAdmin
             ? "Admin"
@@ -27,12 +29,12 @@ export const homeReducer = (state, action) => {
         })),
       };
     case "SEARCH":
-      let searchResult = state.data?.filter((copy) =>
+      let searchResult = state.data?.filter((copy: TDataReducer) =>
         copy.title.toLowerCase().includes(searchInput.toLowerCase())
       );
       return { ...state, searchResult, searchInput };
     case "SEARCH_USER":
-      let userSearchResult = state.usersData?.filter((copy) =>
+      let userSearchResult = state.usersData?.filter((copy: TSortedTitle) =>
         copy.name.first.toLowerCase().includes(searchInput.toLowerCase())
       );
       return { ...state, userSearchResult, searchInput };
@@ -40,7 +42,8 @@ export const homeReducer = (state, action) => {
       let sortedData;
       if (userSearch) {
         sortedData = state.userSearchResult?.sort(
-          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+          (a: TUsersSearchResult, b: TUsersSearchResult) =>
+            +new Date(a.createdAt) - +new Date(b.createdAt)
         );
         return {
           ...state,
@@ -48,7 +51,7 @@ export const homeReducer = (state, action) => {
         };
       } else {
         sortedData = state.searchResult?.sort(
-          (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+          (a: TUpdatedCard, b: TUpdatedCard) => +new Date(a.createdAt) - +new Date(b.createdAt)
         );
         return {
           ...state,
@@ -71,17 +74,18 @@ export const homeReducer = (state, action) => {
         };
       }
     case "SORT_TITLE":
-      const sortedTitle = state.searchResult?.sort((a, b) =>
-        a.title.localeCompare(b.title)
+      const sortedTitle = state.searchResult?.sort(
+        (a: TSortedTitle, b: TSortedTitle) => a.title.localeCompare(b.title)
       );
       return { ...state, searchResult: sortedTitle };
     case "SORT_FNAME":
-      const sortedFNameUsers = state.usersData?.sort((a, b) =>
-        a.name.first.localeCompare(b.name.first)
+      const sortedFNameUsers = state.usersData?.sort(
+        (a: TSortedTitle, b: TSortedTitle) =>
+          a.name.first.localeCompare(b.name.first)
       );
       return { ...state, userSearchResult: sortedFNameUsers };
     case "LIKE_CARD":
-      const updatedSearchResult = state.searchResult?.map((card) =>
+      const updatedSearchResult = state.searchResult?.map((card: TUpdatedCard) =>
         card._id === cardId ? { ...card, liked: shouldLike } : card
       );
       return {
@@ -89,7 +93,7 @@ export const homeReducer = (state, action) => {
         searchResult: updatedSearchResult,
       };
     case "FAV_CARD_INITIAL":
-      const favSearchResultInitial = state.data?.filter((card) =>
+      const favSearchResultInitial = state.data?.filter((card: TDataReducer) =>
         card.likes.includes(userId)
       );
       return {
@@ -98,16 +102,14 @@ export const homeReducer = (state, action) => {
       };
     case "FAV_CARD":
       const favSearchResult = state.searchResult?.filter(
-        (card) => card._id !== cardId
+        (card: TUpdatedCard) => card._id !== cardId
       );
       return {
         ...state,
         searchResult: favSearchResult,
       };
     case "FIL_USER":
-      const filUsers = state.usersData?.filter(
-        (user) => user._id !== userId
-      );
+      const filUsers = state.usersData?.filter((user: TSortedTitle) => user._id !== userId);
       return {
         ...state,
         userSearchResult: filUsers,
@@ -117,7 +119,7 @@ export const homeReducer = (state, action) => {
       return state;
   }
 };
-export const homeInitialState = {
+export const homeInitialState: TInitialReducerData = {
   data: [],
   searchResult: [],
   userSearchResult: [],

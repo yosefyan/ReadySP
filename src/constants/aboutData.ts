@@ -5,8 +5,9 @@ import {
   FaUserDoctor,
   FaUserGraduate,
 } from "../constants/iconsData";
+import { TAboutData } from "../types/constantsTypes";
 
-const aboutData = {
+const aboutData: TAboutData = {
   ReviewsData: {
     Icons: [
       FaUser,

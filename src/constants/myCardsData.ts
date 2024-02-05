@@ -1,3 +1,4 @@
+import { TMyCardData } from "../types/constantsTypes";
 import {
   FaAngleUp,
   FaAngleLeft,
@@ -6,7 +7,7 @@ import {
   FaCheck,
 } from "./iconsData";
 
-const myCardData = {
+const myCardData: TMyCardData = {
   controller: {
     lines: 3,
   },

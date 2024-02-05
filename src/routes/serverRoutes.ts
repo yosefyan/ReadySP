@@ -3,6 +3,7 @@ import {
   EPatchRequests,
   EPostRequests,
   EDeleteRequests,
+  TServerRoutes,
 } from "../types/routesTypes";
 
 const { cards, getMyCards, getUserById, getCardById, getAllUsers } =
@@ -11,7 +12,7 @@ const { cards, getMyCards, getUserById, getCardById, getAllUsers } =
   { likeCard, changeStatus } = EPatchRequests,
   { deleteCard, deleteUser } = EDeleteRequests;
 
-const serverRoutes = {
+const serverRoutes: TServerRoutes = {
   get: {
     cards,
     getMyCards,
@@ -26,11 +27,11 @@ const serverRoutes = {
   },
   patch: {
     likeCard,
-    changeStatus
+    changeStatus,
   },
   delete: {
     deleteCard,
-    deleteUser
+    deleteUser,
   },
 };
 

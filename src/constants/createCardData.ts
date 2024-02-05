@@ -13,8 +13,9 @@ import {
   MdLocationOn,
   TbNumbers,
 } from "../constants/iconsData";
+import { TCreateCardData } from "../types/constantsTypes";
 
-const createCardData = {
+const createCardData: TCreateCardData = {
   createRequiredInputs: [
     "title",
     "subtitle",

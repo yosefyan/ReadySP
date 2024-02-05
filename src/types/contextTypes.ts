@@ -1,4 +1,4 @@
-import { TInputsNormalizer } from "./PagesTypes/registerTypes";
+import { TInputsNormalizer } from "./PagesTypes/inputsNormalizerTypes";
 
 export type TTokenDataContext = {
   empty: boolean;
@@ -12,11 +12,13 @@ export type TTokenDataContext = {
 };
 
 export type TSure = {
-  sure: {
+  sure?: {
     req: string;
     id: string;
     route: string;
   };
+  closed?: boolean;
+  data?: null | unknown;
 };
 
 export type TMainProvider = TAuthProvider & {

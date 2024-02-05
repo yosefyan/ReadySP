@@ -4,3 +4,7 @@ export type TTokenData = {
   isAdmin: boolean;
   iat: number;
 };
+
+export type TMessage = {
+  [key: string]: string | unknown;
+};

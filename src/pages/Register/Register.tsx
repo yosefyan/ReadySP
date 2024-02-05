@@ -5,7 +5,7 @@ import DynamicContext from "../../store/DynamicContext";
 import registerData from "../../constants/registerData";
 import ROUTES from "../../routes/ROUTES";
 import serverRoutes from "../../routes/serverRoutes";
-import { TInputsNormalizer } from "../../types/PagesTypes/registerTypes";
+import { TInputsNormalizer } from "../../types/PagesTypes/inputsNormalizerTypes";
 const Register = () => {
   const [registerInputs, setRegisterInputs] = useState<
     TInputsNormalizer["RegisterClient"]
@@ -32,12 +32,15 @@ const Register = () => {
     <FormComp
       Icons={registerData.Icons}
       subTitleInfo={{
-        title:"Register",
+        title: "Register",
         text: "Own an account?",
         navigate: ROUTES.LOGIN,
       }}
       requiredInputs={registerData.regRequiredInputs}
-      submitData={{ message: "Successfully registered.", navigate: ROUTES.LOGIN }}
+      submitData={{
+        message: "Successfully registered.",
+        navigate: ROUTES.LOGIN,
+      }}
       serverStructure={
         inputsNormalizer({
           nameData: { first, middle, last },
@@ -49,7 +52,7 @@ const Register = () => {
           checkbox,
         }).RegisterServer
       }
-      reqType={'POST'}
+      reqType={"POST"}
       inputsNormalizer={inputsNormalizer}
       inputsState={registerInputs}
       setInputsState={setRegisterInputs}

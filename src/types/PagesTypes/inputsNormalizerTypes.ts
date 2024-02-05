@@ -26,31 +26,33 @@ export type TSensitive = {
   password: string;
 };
 
-export type TRegisterServer = TSensitive & {
-  image: TImage;
-  address: TAddress;
-  name: TName;
+export type TEditCardClient = {
+  [key: string]: string | any;
 };
 
 export type TPermission = {
-  checkbox: boolean;
+  isBusiness: boolean;
 };
-
 
 export type TInputsNormalizer = TPermission & {
   LoginClient?: {
     email: string;
     password: string;
   };
-  RegisterClient: Record<
-    | keyof TImage
-    | keyof TAddress
-    | keyof TName
-    | keyof TPermission
-    | keyof TSensitive,
-    string
-  >;
-  RegisterServer: TRegisterServer;
+  RegisterClient: {};
+  RegisterServer: {};
+  CardClient: {};
+  CardServer: {};
+  EditProfileClient: {
+    [key: string]: string;
+  };
+  EditCardClient: any;
+  EditProfileServer: {
+    name: {};
+    phone: string;
+    image: {};
+    address: {};
+  };
 };
 
 export type TRegisterData = {

@@ -5,7 +5,7 @@ import {
   TSensitive,
   TPermission,
   TInputsNormalizer,
-} from "../types/PagesTypes/registerTypes";
+} from "../types/PagesTypes/inputsNormalizerTypes";
 
 const inputsNormalizer = ({
   first = "",

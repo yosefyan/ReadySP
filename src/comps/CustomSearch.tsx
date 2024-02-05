@@ -13,13 +13,13 @@ import { FaSearch } from "../constants/iconsData";
 import { TCustomSearch } from "../types/componentTypes";
 import { TData } from "../types/constantsTypes";
 
-const CustomSearch: React.FC = ({
+const CustomSearch: React.FC<TCustomSearch> = ({
   textSize,
   height,
   isFiltered = false,
   userSearch = false,
   searchBy,
-}: TCustomSearch) => {
+}) => {
   const { data, dispatch, usersData, searchInput, tokenData } =
     useContext(DynamicContext);
 
@@ -27,6 +27,7 @@ const CustomSearch: React.FC = ({
     target,
   }: React.ChangeEvent<HTMLInputElement>) => {
     const searchInput = target.value;
+    console.log(searchInput)
     if (!isFiltered && !userSearch) {
       dispatch({
         type: "SEARCH",
@@ -83,7 +84,7 @@ const CustomSearch: React.FC = ({
           <FaSearch />
         </i>
         <input
-          value={searchInput || ""}
+          value={searchInput}
           onChange={handleInputChange}
           placeholder={`Search by ${searchBy || "title"}...`}
           className={`${inputStyles(
@@ -122,10 +123,10 @@ const CustomSearch: React.FC = ({
                   true,
                   "from-orange-500/50",
                   "to-blue-500/50"
-                )} ${titleStyles(textSize.toString() || "text-1xl")} ${
+                )} ${titleStyles(textSize?.toString() || "text-1xl")} ${
                   textColors.PRIMARY
                 }`}>
-                {homeData.properties.sortButtons[i].split("Sort by")}
+                {homeData.properties.sortButtons[i].toString().split("Sort by")}
               </button>
             </div>
           );

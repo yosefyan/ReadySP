@@ -4,7 +4,7 @@ import getRandomReview from "../helpers/getRandomReview";
 import { FaTag } from "react-icons/fa";
 import { TCardComp, TUserReview } from "../types/componentTypes";
 
-const Card: React.FC = ({ rotate, title, which }: TCardComp) => {
+const Card: React.FC<TCardComp> = ({ rotate, title, which }) => {
   const [usersReview, setUsersReview] = useState<any>([]);
   const [theNum, setTheNum] = useState<number>(0);
   const ContainerScroll = useRef<HTMLDivElement>(null);

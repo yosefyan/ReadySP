@@ -1,7 +1,12 @@
 import { useContext, useState } from "react";
-import { centerItem, gradient, labelStyles, titleStyles } from "../../../utils/utils";
+import {
+  centerItem,
+  gradient,
+  labelStyles,
+  titleStyles,
+} from "../../../utils/utils";
 import inputsNormalizer from "../../../constants/inputsNormalizer";
-import { TInputsNormalizer } from "../../../types/PagesTypes/registerTypes";
+import { TInputsNormalizer } from "../../../types/PagesTypes/inputsNormalizerTypes";
 import { bgColors, textColors } from "../../../constants/colors";
 import { inputStyles } from "../../../utils/utils";
 import { loginData } from "../../../constants/loginData";
@@ -19,11 +24,11 @@ import serverRoutes from "../../../routes/serverRoutes";
 
 const LoginBox = () => {
   const navigate = useNavigate();
-  const { handleBlur } = useJoiMessage();
+  // const { handleBlur } = useJoiMessage();
   const [loginInputs, setLoginInputs] = useState<
     TInputsNormalizer["LoginClient"]
   >(inputsNormalizer({}).LoginClient);
-  const { setShouldLogout } = useContext(DynamicContext);
+  // const { setShouldLogout } = useContext(DynamicContext);
 
   let handleInputs = (key, value) => {
     setLoginInputs((prev) => ({
@@ -39,7 +44,7 @@ const LoginBox = () => {
     try {
       let { data } = await dynamicPostRequest(
         serverRoutes.post.login,
-        inputsNormalizer({email, password}).LoginClient
+        inputsNormalizer({ email, password }).LoginClient
       );
       localStorage.setItem("token", data);
       toastifyHelper({

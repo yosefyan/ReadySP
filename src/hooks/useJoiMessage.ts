@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { genericValidation } from "../validation/genericValidation";
 import createCardData from "../constants/createCardData";
+import { TCreateCardData } from "../types/constantsTypes";
+import { TMessage } from "../types/customHooksTypes";
 
 const useJoiMessage = (
-  theValue?: string,
-  key?: string,
-  currentData?: any,
+  theValue: string,
+  key: string,
+  currentData?: TCreateCardData,
   requiredInputs?: any
 ) => {
-  let [message, setMessage] = useState({});
+  let [message, setMessage] = useState<TMessage>({});
+
   useEffect(() => {
     let { validationInfo } = currentData || createCardData;
     let joiResponse = genericValidation(
@@ -28,10 +31,8 @@ const useJoiMessage = (
     });
   }, [theValue, key]);
 
-  const handleBlur = (value, key) => {
-    // setMessage(value, key);
-  };
-  return { message, setMessage, handleBlur };
+
+  return { message, setMessage };
 };
 
 export default useJoiMessage;

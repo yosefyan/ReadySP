@@ -7,15 +7,15 @@ export const fstLetterUpper = (aString: string): string => {
 };
 
 export const handleScroll = (
-  setScrollAmount,
-  ElementToScroll,
+  setScrollAmount: React.Dispatch<React.SetStateAction<number>>,
+  ElementToScroll: React.RefObject<HTMLElement | any>,
   directionToScroll: string,
   direction: string,
   i: number,
   shouldPercentage: boolean,
   percentage: number,
   shouldFocus: boolean,
-  inputsToFocus
+  inputsToFocus: React.RefObject<HTMLElement>[]
 ) => {
   let height = ElementToScroll.current[directionToScroll] || 0;
   let result =

@@ -26,7 +26,7 @@ export const inputStyles = (bgColor: string, ...sizes: string[]) => {
 
 export const triangleStyles = (
   upsideDown: boolean,
-  height: string,
+  height?: string,
   color?: string
 ) => {
   return `w-0 h-0 border-l-[12rem] border-l-transparent ${
@@ -46,10 +46,10 @@ export const titleStyles = (fontSize?: string) => {
   return `${fontSize || "text-4xl"} text-center font-black tracking-widest`;
 };
 
-export const labelStyles =
+export const labelStyles: string =
   "text-6xl text-white/50 absolute transition-all blur-3xl scale-0 tShadow";
 
-export const shadowEffects = `rotateSpace tShadow bg-sky-500/5 shadow-lg rounded-full shadow-white/25 transition-all`;
+export const shadowEffects: string = `rotateSpace tShadow bg-sky-500/5 shadow-lg rounded-full shadow-white/25 transition-all`;
 
 export const iconStyles = (size?: string) => {
   return `${size || "text-5xl"} font-black cursor-pointer`;

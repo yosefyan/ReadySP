@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 const useHidePassword = () => {
-  const [hidePassword, setHidePassword] = useState(true);
+  const [hidePassword, setHidePassword] = useState<boolean>(true);
 
   const handleEyeStatus = () => {
     setHidePassword((prev) => !prev);

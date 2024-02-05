@@ -19,8 +19,9 @@ import {
   FaPhone,
   FaEarthAmericas,
 } from "../constants/iconsData";
+import { TRegisterData } from "../types/constantsTypes";
 
-const registerData = {
+const registerData: TRegisterData = {
   Icons: [
     PiNumberOneBold,
     PiNumberTwoBold,
@@ -106,7 +107,7 @@ const registerData = {
       isRequired: false,
     },
     state: {
-       isRequired: false
+      isRequired: false,
     },
     otherInputs: ["first", "last", "country", "city", "street"],
   },

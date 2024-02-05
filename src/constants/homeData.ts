@@ -1,3 +1,4 @@
+import { THomeData } from "../types/constantsTypes";
 import {
   LuCalendarClock,
   MdNavigateBefore,
@@ -17,7 +18,7 @@ import {
   BsPencil,
 } from "./iconsData";
 
-export const homeData = {
+export const homeData: THomeData = {
   portalData: {
     circles: Array(6).fill(""),
     colors: [

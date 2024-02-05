@@ -1,4 +1,4 @@
-import { TRoutesObject } from "../types/routesTypes";
+import { TRouterData, TRoutesObject } from "../types/routesTypes";
 import { Paths } from "../constants/routerData";
 import {
   Home,
@@ -17,7 +17,7 @@ import {
 
 const ROUTES: TRoutesObject = {};
 
-export const routerData = {
+export const routerData: TRouterData = {
   paths: Object.values(Paths),
   elements: [
     Home,

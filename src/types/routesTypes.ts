@@ -39,3 +39,14 @@ export enum EDeleteRequests {
   deleteCard = "/cards/",
   deleteUser = "/users/",
 }
+
+export type TRouterData = {
+  paths: string[];
+  elements: React.ComponentType[]
+}
+
+export type TServerRoutes = {
+  [key: string]: {
+    [key: string]: string;
+  }
+}
