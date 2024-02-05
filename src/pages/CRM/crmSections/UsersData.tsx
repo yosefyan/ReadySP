@@ -82,7 +82,7 @@ const UsersData = () => {
           {userSearchResult?.length === 0 ? (
             <Loading searchInput={searchInput || "Your Username"} />
           ) : (
-            userSearchResult?.map(({user, index}: TUserSearchResult) => {
+            userSearchResult?.map((user:TUserSearchResult, index: number) => {
               return (
                 <div
                   key={`usersDataFull${index}`}

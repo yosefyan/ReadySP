@@ -11,18 +11,21 @@
     "scss": "node-sass src/scss -o src/css"
   },
   "dependencies": {
+    "@rbnd/react-dark-mode": "^2.0.1",
     "axios": "^1.6.5",
     "chart.js": "^4.4.1",
     "joi": "^17.11.0",
     "jwt-decode": "^4.0.0",
     "node-sass": "^9.0.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.21.3",
     "react-toastify": "^10.0.4",
-    "sass": "^1.69.7"
+    "sass": "^1.69.7",
+    "twin-moon-color": "^0.0.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

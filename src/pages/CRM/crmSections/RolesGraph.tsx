@@ -1,4 +1,3 @@
-import React from 'react'
 import Graph from '../../../comps/LineGraph'
 import { centerItem } from '../../../utils/utils'
 

@@ -1,5 +1,5 @@
 export type TUserSearchResult = {
-  user: {
+  
     name: {
       first: string;
       middle: string;
@@ -7,7 +7,7 @@ export type TUserSearchResult = {
     };
     role: string;
     _id: string;
-  };
+
   index: number;
 };
 
