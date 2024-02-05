@@ -24,14 +24,13 @@ import serverRoutes from "../../../routes/serverRoutes";
 
 const LoginBox = () => {
   const navigate = useNavigate();
-  // const { handleBlur } = useJoiMessage();
   const [loginInputs, setLoginInputs] = useState<
     TInputsNormalizer["LoginClient"]
   >(inputsNormalizer({}).LoginClient);
-  // const { setShouldLogout } = useContext(DynamicContext);
+  const [attempts, setAttempts] = useState<number>(0);
 
-  let handleInputs = (key, value) => {
-    setLoginInputs((prev) => ({
+  let handleInputs = (key: string, value: string) => {
+    setLoginInputs((prev: any) => ({
       ...prev,
       [key]: value,
     }));
@@ -42,17 +41,48 @@ const LoginBox = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let { data } = await dynamicPostRequest(
-        serverRoutes.post.login,
-        inputsNormalizer({ email, password }).LoginClient
-      );
-      localStorage.setItem("token", data);
-      toastifyHelper({
-        status: EToastifyStatuses.success,
-        message: "Welcome back",
-      });
-      navigate(ROUTES.HOME);
+      const blockExpiration = localStorage.getItem("blockExpiration");
+      if (blockExpiration && new Date(blockExpiration) > new Date()) {
+        toastifyHelper({
+          status: EToastifyStatuses.error,
+          message: "Your account is blocked. Please try again later.",
+        });
+        return;
+      }
+      if (attempts < 3) {
+        let emailToken = localStorage.getItem("blackList");
+        if (emailToken && emailToken === email) {
+          toastifyHelper({
+            status: EToastifyStatuses.error,
+            message: "Your account has been blocked, please try again later.",
+          });
+        } else {
+          let { data } = await dynamicPostRequest(
+            serverRoutes.post.login,
+            inputsNormalizer({ email, password }).LoginClient
+          );
+          localStorage.setItem("token", data);
+          toastifyHelper({
+            status: EToastifyStatuses.success,
+            message: "Welcome back",
+          });
+          navigate(ROUTES.HOME);
+        }
+      } else {
+        toastifyHelper({
+          status: EToastifyStatuses.error,
+          message: "Your account has been blocked, please try again later.",
+        });
+        const blockExpirationDate = new Date();
+        blockExpirationDate.setHours(blockExpirationDate.getHours() + 24);
+        localStorage.setItem(
+          "blockExpiration",
+          blockExpirationDate.toISOString()
+        );
+      }
+      localStorage.setItem("blackList", email);
     } catch (error) {
+      setAttempts((prev) => prev + 1);
       toastifyHelper({
         status: EToastifyStatuses.error,
         message: "Invalid email or password.",
@@ -64,7 +94,7 @@ const LoginBox = () => {
     <div className="rotateSpace z-20 w-[60vw] h-[80vh] transition-all bg-black/50 rounded-lg shadow-lg shadow-black">
       <h1
         className={`${titleStyles("text-7xl")} ${centerItem(
-          loginInputs.email ? "justify-end" : ""
+          loginInputs?.email ? "justify-end" : ""
         )} mx-8 ${gradient(
           true,
           "from-orange-500/50",
@@ -101,7 +131,6 @@ const LoginBox = () => {
                   onChange={({ target }) => handleInputs(key, target.value)}
                   autoFocus={i == 0}
                   value={value}
-                  onBlur={() => handleBlur(value, key)}
                   type={i === 1 && hidePassword ? "password" : "text"}
                   placeholder={`Enter ${key}...`}
                 />
