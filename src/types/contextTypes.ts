@@ -30,6 +30,8 @@ export type TMainProvider = TAuthProvider & {
   >;
   checkbox: boolean;
   setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
+  close: boolean;
+  setClose: React.Dispatch<React.SetStateAction<boolean>>;
   scrollAmount: number;
   setScrollAmount: React.Dispatch<React.SetStateAction<number>>;
   heightContainer: any;

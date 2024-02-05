@@ -1,37 +1,23 @@
 import { memo, useContext, useEffect, useState } from "react";
 import dynamicGet from "../../../services/getRequests/dynamicGet";
-import { centerItem, titleStyles } from "../../../utils/utils";
-import { textColors } from "../../../constants/colors";
+import { centerItem } from "../../../utils/utils";
 import DynamicContext from "../../../store/DynamicContext";
 import Loading from "../../Loading/Loading";
 import Data from "./hologramSections/Data";
 import SpaceshipContainer from "./hologramSections/SpaceshipContainer";
 import dynamicPatch from "../../../services/patchRequests/dynamicPatch";
-import { SiPrevention } from "react-icons/si";
-import dynamicDelete from "../../../services/deleteRequests/dynamicDelete";
 import serverRoutes from "../../../routes/serverRoutes";
 import toastifyHelper from "../../../helpers/toastifyHelper";
 import { EToastifyStatuses } from "../../../types/helpersTypes";
+import { THolograms } from "../../../types/componentTypes";
+import { TCardConst } from "../../../types/constantsTypes";
+import { TUserSearchResult } from "../../../types/PagesTypes/crmTypes";
 
-const Holograms = ({
-  url,
-  full,
-  shouldFilter,
-}: {
-  url: string;
-  full: string;
-}) => {
-  const {
-    setSure,
-    setCards,
-    dispatch,
-    searchInput,
-    searchResult,
-    inputsState,
-    tokenData,
-  } = useContext(DynamicContext);
+const Holograms = ({ url, full, shouldFilter }: THolograms) => {
+  const { setSure, setCards, dispatch, searchInput, searchResult, tokenData } =
+    useContext<any>(DynamicContext);
   const [shouldShow, setShouldShow] = useState<number | null>(null);
-  const [shouldLike, setShouldLike] = useState([{}]);
+  const [shouldLike, setShouldLike] = useState<any>([{}]);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -52,13 +38,19 @@ const Holograms = ({
     fetchCards();
   }, []);
 
-  const handleLikeCard = async (cardId, card, i) => {
+  const handleLikeCard = async (
+    cardId: string,
+    card: TCardConst,
+    i: number
+  ) => {
     try {
       const res = await dynamicPatch(`${serverRoutes.patch.likeCard}${cardId}`);
-      setShouldLike((prevState) => {
+      setShouldLike(() => {
         const updatedState = {
           isLiked: res.likes.includes(tokenData.user._id),
-          index: searchResult.findIndex((card) => card._id === cardId),
+          index: searchResult.findIndex(
+            (card: TUserSearchResult) => card._id === cardId
+          ),
         };
 
         return updatedState;
@@ -83,7 +75,7 @@ const Holograms = ({
     }
   };
 
-  const handleDeleteCard = async (cardId, card) => {
+  const handleDeleteCard = async (cardId: string) => {
     try {
       setSure({
         closed: false,
@@ -112,7 +104,7 @@ const Holograms = ({
       {searchResult?.length === 0 ? (
         <Loading searchInput={searchInput} />
       ) : (
-        searchResult?.map((card, i: number) => {
+        searchResult?.map((card: TUserSearchResult, i: number) => {
           const { _id, phone, address } = card;
           const { country, city, street } = address;
           const data = [phone, `${country} ${city} ${street}`, _id];

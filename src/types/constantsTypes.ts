@@ -76,4 +76,18 @@ export type TRegisterData = {
   };
 };
 
+export type TCardConst = {
+  image: {
+    url: string;
+    alt: string;
+  }
+  title: string;
+  subtitle: string
+  liked: boolean;
+  _id: string;
+  phone: string;
+  user_id: string;
+  likes: string[];
+}
+
 export type TOtherInputs = string[];

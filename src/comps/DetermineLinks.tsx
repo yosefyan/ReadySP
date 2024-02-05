@@ -15,17 +15,18 @@ import ROUTES from "../routes/ROUTES";
 import useAutoLogin from "../hooks/useAutoLogin";
 import ListComp from "./ListComp";
 import { TMainProvider, TTokenDataContext } from "../types/contextTypes";
-import { LinkItem, TDetermineLinks, TLinksMapping } from "../types/linkTypes";
+import { LinkItem, TDetermineLinks } from "../types/linkTypes";
 
-export const linksMapping: TLinksMapping<
-  "Ghost" | "Normal" | "Business" | "Admin"
-> = {
+export const linksMapping: any = {
   Ghost: welcomeLinks,
   Normal: loggedInLinks,
   Business: businessLinks,
   Admin: adminLinks,
 };
-const DetermineLinks: React.FC = ({ customHeight, filterTab }: TDetermineLinks) => {
+const DetermineLinks: React.FC = ({
+  customHeight,
+  filterTab,
+}: TDetermineLinks) => {
   const [whichLinks, setWhichLinks] = useState<LinkItem[]>([]);
   const finishedLoading = useAutoLogin();
   const { tokenData, setTokenData, shouldLogout, setShouldLogout } =

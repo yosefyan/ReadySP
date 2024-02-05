@@ -21,7 +21,6 @@ const inputsNormalizer = ({
   password = "",
   imageData = {},
   addressData = {},
-  isBusiness = {},
   url = "",
   alt = "",
   state = "",

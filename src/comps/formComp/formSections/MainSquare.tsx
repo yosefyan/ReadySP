@@ -25,6 +25,7 @@ const MainSquare = ({
   Icon,
   setInputsState,
   setCheckBox,
+  shouldFloat = false,
 }: TMainSquare) => {
   const { message } = useJoiMessage(value, theKey, currentData, requiredInputs);
 
@@ -91,6 +92,7 @@ const MainSquare = ({
               ? "password"
               : "text"
           }`}
+          disabled={shouldFloat ? true : false}
           onClick={() =>
             theKey === "isBusiness" && setCheckBox((prev: boolean) => !prev)
           }
@@ -105,10 +107,12 @@ const MainSquare = ({
             handleEyeStatus={handleEyeStatus}
           />
         )}
-        <MessageComp
-          joiError={message?.joiError}
-          joiSuccess={message?.joiSuccess}
-        />
+        {!shouldFloat && (
+          <MessageComp
+            joiError={message?.joiError}
+            joiSuccess={message?.joiSuccess}
+          />
+        )}
       </div>
     </div>
   );

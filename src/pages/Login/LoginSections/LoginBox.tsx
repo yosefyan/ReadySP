@@ -41,7 +41,7 @@ const LoginBox = () => {
     e.preventDefault();
     try {
       const blockExpiration = localStorage.getItem("blockExpiration");
-       let emailToken = localStorage.getItem("blackList");
+      let emailToken = localStorage.getItem("blackList");
       if (
         blockExpiration &&
         emailToken &&
@@ -55,7 +55,6 @@ const LoginBox = () => {
         return;
       }
       if (attempts < 3) {
-       
         if (emailToken && emailToken === email) {
           toastifyHelper({
             status: EToastifyStatuses.error,
@@ -84,8 +83,8 @@ const LoginBox = () => {
           "blockExpiration",
           blockExpirationDate.toISOString()
         );
+        localStorage.setItem("blackList", email);
       }
-      localStorage.setItem("blackList", email);
     } catch (error) {
       setAttempts((prev) => prev + 1);
       toastifyHelper({

@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "https://monkfish-app-z9uza.ondigitalocean.app/bcard2",
 });
 
-export const addAuthorizationToken = (config, shouldIncludeToken: boolean = false) => {
+export const addAuthorizationToken = (config: any, shouldIncludeToken: boolean = false) => {
   if (shouldIncludeToken) {
     config.headers['x-auth-token'] = localStorage.getItem('token');
   }

@@ -1,13 +1,10 @@
 import { useEffect, useContext, FormEvent } from "react";
-import {
-  buttonStyles,
-  centerItem,
-} from "../../../utils/utils";
+import { buttonStyles, centerItem } from "../../../utils/utils";
 import registerData from "../../../constants/registerData";
 import { TriangleComp } from "../..";
 import DynamicContext from "../../../store/DynamicContext";
 import useJoiMessage from "../../../hooks/useJoiMessage";
-import {  handleScroll, toastifyHelper } from "../../../helpers";
+import { handleScroll, toastifyHelper } from "../../../helpers";
 import dynamicPostRequest from "../../../services/dynamicPost";
 import { useNavigate } from "react-router-dom";
 import { EToastifyStatuses } from "../../../types/helpersTypes";
@@ -26,6 +23,7 @@ const RegisterSlider = ({
   requiredInputs,
   submitData,
   reqType,
+  shouldFloat = false,
 }: TFormComp) => {
   const navigate = useNavigate();
   const { message } = useJoiMessage("", "");
@@ -55,28 +53,29 @@ const RegisterSlider = ({
   let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formElement = e.currentTarget as HTMLFormElement;
-
-    if (!formElement.checkValidity()) {
-      toastifyHelper({
-        status: EToastifyStatuses.error,
-        message: "Please fill all required inputs.",
-      });
-    } else {
-      try {
-        reqType.request === "PUT"
-          ? await dynamicPut(reqType.id, serverStructure)
-          : await dynamicPostRequest(reqUrl, serverStructure);
-        toastifyHelper({
-          status: EToastifyStatuses.success,
-          message: submitData.message,
-        });
-        navigate(submitData.navigate);
-      } catch (error) {
+    if (!shouldFloat) {
+      if (!formElement.checkValidity()) {
         toastifyHelper({
           status: EToastifyStatuses.error,
-          message:
-            error.response.data.replace("Joi Error:", "") || message.joiError,
+          message: "Please fill all required inputs.",
         });
+      } else {
+        try {
+          reqType.request === "PUT"
+            ? await dynamicPut(reqType.id, serverStructure)
+            : await dynamicPostRequest(reqUrl, serverStructure);
+          toastifyHelper({
+            status: EToastifyStatuses.success,
+            message: submitData.message,
+          });
+          navigate(submitData.navigate);
+        } catch (error) {
+          toastifyHelper({
+            status: EToastifyStatuses.error,
+            message:
+              error.response.data.replace("Joi Error:", "") || message.joiError,
+          });
+        }
       }
     }
   };
@@ -126,13 +125,14 @@ const RegisterSlider = ({
               setInputsState={setInputsState}
               inputsRefs={inputRefs}
               setCheckBox={setCheckBox}
+              shouldFloat={shouldFloat}
             />
             <TriangleComp shouldDown={false}>
               {percentage >= 100 ? (
                 <input
                   className="text-4xl w-[25vw] p-8 text-white/25 font-black tracking-widest translate-y-[-7vh] cursor-pointer"
                   type="submit"
-                  value="SUBMIT"
+                  value={`${shouldFloat ? "END" : "SUBMIT"}`}
                   disabled={false}
                 />
               ) : (

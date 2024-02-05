@@ -16,7 +16,7 @@ const DisplayInputs = ({
   subTitleInfo,
   isMap,
 }: TDisplayInputs) => {
-  const { checkbox, setScrollAmount, heightContainer, inputRefs } =
+  const { checkbox, setScrollAmount, heightContainer, inputRefs, setClose } =
     useContext<TMainProvider>(DynamicContext);
   const [typingEffect, setTypingEffect] = useState<boolean>(false);
   const [showMap, setShowMap] = useState<boolean>(false);
@@ -46,7 +46,11 @@ const DisplayInputs = ({
           {subTitleInfo.title}
         </h1>
         <button
-          onClick={() => navigate(subTitleInfo.navigate)}
+          onClick={() =>
+            subTitleInfo.text.includes("Close")
+              ? setClose(true)
+              : navigate(subTitleInfo.navigate)
+          }
           className={`text-white/25 w-full ${
             bgColors.PRIMARY
           } p-4 ${titleStyles(

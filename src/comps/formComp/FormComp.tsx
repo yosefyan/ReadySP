@@ -15,11 +15,14 @@ const FormComp = ({
   reqUrl,
   submitData,
   reqType,
-  isMap
+  isMap,
+  shouldFloat,
 }: TFormComp) => {
   return (
     <div
-      className={`${centerItem()} overflow-hidden flex-col xl:flex-row h-[90%] p-4 overflow-hidden`}>
+      className={`${centerItem()} ${
+        shouldFloat && "absolute w-full bg-black/75"
+      } overflow-hidden flex-col xl:flex-row h-[90%] p-4 overflow-hidden`}>
       <div className={`w-[80%] xl:w-[60%] lg:w-full h-full ${centerItem()}`}>
         <RegisterSlider
           reqType={reqType}
@@ -32,6 +35,7 @@ const FormComp = ({
           setInputsState={setInputsState}
           reqUrl={reqUrl}
           requiredInputs={requiredInputs}
+          shouldFloat
         />
         <RocketProgress />
       </div>

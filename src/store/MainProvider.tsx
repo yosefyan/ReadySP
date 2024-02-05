@@ -9,7 +9,7 @@ import { TInitialReducerData, TPayload } from "../types/reducerTypes";
 
 const HomeProvider = ({ children }: TTypicalChildren) => {
   const [filteredData, setFilteredData] = useState([]);
-  const [state, dispatch] = useReducer<Reducer<TInitialReducerData, TPayload>>(
+  const [state, dispatch] = useReducer<any>(
     homeReducer,
     homeInitialState
   );
@@ -27,6 +27,8 @@ const HomeProvider = ({ children }: TTypicalChildren) => {
     closed: true,
     data: null,
   });
+  const [currentPreview, setCurrentPreview] = useState(null);
+  const [close, setClose] = useState<boolean>(true);
 
   const contextValue = {
     ...state,
@@ -47,6 +49,10 @@ const HomeProvider = ({ children }: TTypicalChildren) => {
     heightContainer,
     sure,
     setSure,
+    currentPreview,
+    setCurrentPreview,
+    close,
+    setClose
   };
 
   return (

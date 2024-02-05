@@ -1,5 +1,5 @@
 export type TInitialReducerData = {
-  data: any[];
+  data: string[];
   searchResult: any[];
   userSearchResult: any[];
   usersData: any[];
@@ -36,7 +36,10 @@ export type TPayload = {
     cardId: string;
     userId: string;
     usersData: TSortedTitle[];
-    shouldLike: boolean;
+    shouldLike: {
+      index: number;
+      isLiked: boolean;
+    }
     userSearch: boolean;
   };
   type: string;

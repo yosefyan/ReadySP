@@ -7,7 +7,7 @@ import {
   TImage,
 } from "./PagesTypes/inputsNormalizerTypes";
 import { IconTree, IconType } from "react-icons";
-import { TCreateCardData } from "./constantsTypes";
+import { TCardConst, TCreateCardData, TData } from "./constantsTypes";
 
 export type TTypicalChildren = {
   children?: ReactNode;
@@ -52,10 +52,11 @@ export type TMapComp = {
 
 export type TFormComp = {
   Icons: IconType[];
-  submitData: {
+  submitData?: {
     message: string;
     navigate: string;
   };
+  shouldFloat: boolean;
   currentData: TCreateCardData;
   subTitleInfo: {
     title: string;
@@ -130,4 +131,24 @@ export type TMainSquare = {
   requiredInputs: string[];
   setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
   setInputsState: React.Dispatch<React.SetStateAction<string>>;
+  shouldFloat: boolean;
+};
+
+export type TDataComp = {
+  card: TCardConst;
+  data: TData;
+  shouldShow: number;
+  i: number;
+  onLike: (cardId: string, card: [], i: number) => {};
+  onDelete: (cardId: string) => {};
+  shouldLike: {
+    index: number;
+    isLiked: boolean;
+  };
+};
+
+export type THolograms = {
+  url: string;
+  full: string;
+  shouldFilter: boolean;
 };

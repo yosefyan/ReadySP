@@ -9,7 +9,7 @@ import dynamicGet from "../../services/getRequests/dynamicGet";
 import profileData from "../../constants/profileData";
 
 const Profile = () => {
-  const { tokenData } = useContext(DynamicContext);
+  const { tokenData } = useContext<any>(DynamicContext);
   const [profileInputs, setProfileInputs] = useState({
     first: "",
     middle: "",

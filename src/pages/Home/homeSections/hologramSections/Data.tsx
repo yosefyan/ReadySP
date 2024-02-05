@@ -10,7 +10,8 @@ import { memo, useContext } from "react";
 import DynamicContext from "../../../../store/DynamicContext";
 import ROUTES from "../../../../routes/ROUTES";
 import { Link, useNavigate } from "react-router-dom";
-import serverRoutes from "../../../../routes/serverRoutes";
+import { TDataComp } from "../../../../types/componentTypes";
+import { TCardConst } from "../../../../types/constantsTypes";
 
 const Data = ({
   card,
@@ -20,25 +21,31 @@ const Data = ({
   onLike,
   onDelete,
   shouldLike,
-}: {
-  card: [];
-  data: [];
-}) => {
-  const handleImageError = (e) => {
+}: TDataComp) => {
+  const handleImageError = (e: any) => {
     e.target.src = bgWebsite;
   };
   const navigate = useNavigate();
-  const { tokenData, sure, setSure } = useContext(DynamicContext);
+  const { tokenData, setCurrentPreview, setClose } = useContext<any>(DynamicContext);
   const { roleIcons, ulData } = homeData;
   const { icons, titles } = ulData;
 
-  const handleLikeCard = async (cardId, card, i) => {
+  const handleImageClick = () => {
+    setCurrentPreview(card);
+    setClose(false);
+  };
+
+  const handleLikeCard = async (
+    cardId: string,
+    card: any,
+    i: number
+  ) => {
     try {
       await onLike(cardId, card, i);
     } catch (error) {}
   };
 
-  const handleDeleteCard = async (cardId) => {
+  const handleDeleteCard = async (cardId: string) => {
     try {
       await onDelete(cardId);
     } catch (error) {}
@@ -50,6 +57,7 @@ const Data = ({
       <div className={`${centerItem()} h-[50vh]`}>
         <div className="bg-black shadow-2xl overflow-hidden text-white rounded-3xl w-[95%] h-[95%] z-20">
           <img
+            onClick={handleImageClick}
             className="w-full h-[50%]"
             src={card?.image.url || bgWebsite}
             alt={card?.image.alt}
@@ -99,7 +107,7 @@ const Data = ({
                             "from-orange-500/50",
                             "to-blue-500/50"
                           )} text-3xl`}>
-                          {fstLetterUpper(titles[i])}
+                          {fstLetterUpper(titles[i].toString())}
                         </h1>
                         <h3
                           className={`${textColors.PRIMARY}
@@ -147,7 +155,7 @@ const Data = ({
                   } else if (index === 1) {
                     handleLikeCard(card?._id, card, i);
                   } else if (index === 3) {
-                    handleDeleteCard(card?._id, card);
+                    handleDeleteCard(card?._id);
                   }
                 }}
                 className={`${

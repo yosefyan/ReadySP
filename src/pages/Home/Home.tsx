@@ -6,11 +6,13 @@ import Holograms from "./homeSections/Holograms";
 import Portal from "./homeSections/Portal";
 import PropertiesTab from "./homeSections/Properties";
 import DynamicContext from "../../store/DynamicContext";
+import CardPreview from "./homeSections/CardPreview";
 
 const Home = () => {
   const { sure } = useContext(DynamicContext);
   return (
-    <div className={`${centerItem()} w-full flex-col lg:flex-row`}>
+    <div className={`${centerItem()} relative w-full flex-col lg:flex-row`}>
+      <CardPreview />
       <div
         style={{ zIndex: sure.closed ? -999 : 999 }}
         className={`w-full h-full absolute ${centerItem()}`}>
@@ -18,7 +20,6 @@ const Home = () => {
       </div>
       <PropertiesTab />
       <Holograms url={serverRoutes.get.cards} />
-
       <Portal />
     </div>
   );
