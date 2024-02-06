@@ -3,10 +3,9 @@ import { GiSpaceship } from "../../../constants/iconsData";
 import DynamicContext from "../../../store/DynamicContext";
 import { useContext } from "react";
 import { textColors } from "../../../constants/colors";
-import { TMainProvider } from "../../../types/contextTypes";
 
 const RocketProgress = () => {
-  const { percentage } = useContext<TMainProvider>(DynamicContext);
+  const { percentage } = useContext<any>(DynamicContext);
 
   return (
     <div className="w-[20%] bg-black/50 hidden lg:block h-full text-center shadow-lg shadow-black font-black text-white/50 text-4xl">

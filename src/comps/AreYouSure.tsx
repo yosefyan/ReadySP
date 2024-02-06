@@ -10,7 +10,7 @@ import { TSure } from "../types/contextTypes";
 
 const AreYouSure: React.FC = () => {
   const { card, sure, setSure, dispatch, usersData } =
-    useContext(DynamicContext);
+    useContext<any>(DynamicContext);
 
   const handleConfirm = async (i: number) => {
     setSure((prev: TSure) => ({

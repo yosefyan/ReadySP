@@ -21,7 +21,7 @@ import { TSure } from "../../../types/contextTypes";
 
 const UsersData = () => {
   const { searchInput, userSearchResult, dispatch, setSure } =
-    useContext(DynamicContext);
+    useContext<any>(DynamicContext);
   const [currentRole, setCurrentRole] = useState<TCurrentRole>({
     role: "",
     index: null,

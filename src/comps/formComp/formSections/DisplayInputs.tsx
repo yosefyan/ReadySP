@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "../../../constants/iconsData";
 import MapComp from "../../MapComp";
 import { TDisplayInputs } from "../../../types/componentTypes";
-import { TMainProvider } from "../../../types/contextTypes";
 
 const DisplayInputs = ({
   inputsState,
@@ -17,7 +16,7 @@ const DisplayInputs = ({
   isMap,
 }: TDisplayInputs) => {
   const { checkbox, setScrollAmount, heightContainer, inputRefs, setClose } =
-    useContext<TMainProvider>(DynamicContext);
+    useContext<any>(DynamicContext);
   const [typingEffect, setTypingEffect] = useState<boolean>(false);
   const [showMap, setShowMap] = useState<boolean>(false);
   const navigate = useNavigate();

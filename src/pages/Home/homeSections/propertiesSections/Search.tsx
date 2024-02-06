@@ -11,7 +11,7 @@ import { FaSearch } from "../../../../constants/iconsData";
 import DynamicContext from "../../../../store/DynamicContext";
 
 const Search = () => {
-  const { data, dispatch, searchInput } = useContext(DynamicContext);
+  const { data, dispatch, searchInput } = useContext<any>(DynamicContext);
 
   const handleInputChange = ({ target }) => {
     const searchInput = target.value;

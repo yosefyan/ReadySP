@@ -21,7 +21,7 @@ const CustomSearch: React.FC<TCustomSearch> = ({
   searchBy,
 }) => {
   const { data, dispatch, usersData, searchInput, tokenData } =
-    useContext(DynamicContext);
+    useContext<any>(DynamicContext);
 
   const handleInputChange = ({
     target,

@@ -3,14 +3,14 @@ import CustomSearch from "../../comps/CustomSearch";
 import Laser from "../../comps/Laser";
 import { bgColors, textColors } from "../../constants/colors";
 import serverRoutes from "../../routes/serverRoutes";
-import { centerItem, iconStyles, titleStyles } from "../../utils/utils";
+import { centerItem, iconStyles } from "../../utils/utils";
 import Holograms from "../Home/homeSections/Holograms";
 import { FaAngleDown } from "../../constants/iconsData";
 import DynamicContext from "../../store/DynamicContext";
 
 const FavCards = () => {
   const [close, setClose] = useState<boolean>(false);
-   const { searchResult } = useContext(DynamicContext);
+   const { searchResult } = useContext<any>(DynamicContext);
   return (
     <div
       className={`w-full overflow-y-scroll lg:overflow-hidden h-[90%] ${centerItem()} bg-black/50`}>

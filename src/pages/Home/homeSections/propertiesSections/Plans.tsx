@@ -7,7 +7,7 @@ import { memo, useContext } from "react";
 import DynamicContext from "../../../../store/DynamicContext";
 
 const Plans = () => {
-  const { tokenData } = useContext(DynamicContext);
+  const { tokenData } = useContext<any>(DynamicContext);
   return (
     <div
       className={`w-full h-[40%] ${centerItem(
