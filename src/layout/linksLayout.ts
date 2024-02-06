@@ -31,14 +31,14 @@ const defaultData = {
   defaultLinks: generateLinks(
     2,
     [ROUTES.HOME, ROUTES.ABOUT],
-    ["Home", "About"],
+    ["/#/Home", "/#/About"],
     [FaHome, GiFallingStar]
   ),
 
   defaultLoggediInLinks: generateLinks(
     1,
     [ROUTES.PROFILE],
-    ["Profile"],
+    ["/#/Profile"],
     [BsPerson]
   ),
 };
@@ -46,7 +46,7 @@ const defaultData = {
 const welcomeLinks = generateLinks(
   3,
   [ROUTES.WELCOME, ROUTES.LOGIN, ROUTES.REGISTER],
-  ["Welcome", "Login", "Register"],
+  ["/#/Welcome", "/#/Login", "/#/Register"],
   [MdWavingHand, IoMdLogIn, FaPencilAlt]
 );
 
