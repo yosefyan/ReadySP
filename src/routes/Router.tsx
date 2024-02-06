@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 import { routerData } from "./ROUTES";
-import DynamicRoleMiddleware from "../middlewares/DynamicRoleMiddleware";
 import { defaultData } from "../layout/linksLayout";
 import DynamicContext from "../store/DynamicContext";
 import { linksMapping } from "../comps/DetermineLinks";
-import { TMainProvider } from "../types/contextTypes";
 
 const Routes = () => {
-  const { tokenData } = useContext<TMainProvider>(DynamicContext);
+  const { tokenData } = useContext<any>(DynamicContext);
   const routeLogic = (Comp: React.ComponentType) => {
     if (
       linksMapping[tokenData.role][0].comp.includes(Comp.name) ||
