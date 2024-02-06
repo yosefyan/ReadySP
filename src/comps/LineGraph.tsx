@@ -6,7 +6,7 @@ import { TSortedData } from "../types/componentTypes";
 import { TUsersData } from "../types/constantsTypes";
 
 const Graph = () => {
-  const { usersData } = useContext(DynamicContext);
+  const { usersData } = useContext<any>(DynamicContext);
 
   const [sortedData, setSortedData] = useState<TSortedData>({
     Admin: 0,

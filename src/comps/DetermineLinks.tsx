@@ -77,7 +77,7 @@ const DetermineLinks: React.FC = ({
         ) : (
           <ListComp listName={"ROLE LIST"}>
             {roleChecker() &&
-              whichLinks?.map((lin: TWhichLinks, i: number) => {
+              whichLinks?.map((lin: any, i: number) => {
                 let Icon = lin.icon;
                 return (
                   <NavLinkComp key={`loggedInLinks${i}`} to={lin.to}>
@@ -90,7 +90,7 @@ const DetermineLinks: React.FC = ({
         )}
         <div className={`w-full ${centerItem()} flex-col lg:flex-row`}>
           {Object.values(defaultData.defaultLinks).map((defa, i) => {
-            let Icon = defa.icon;
+            let Icon: any = defa.icon;
             return (
               <div
                 key={`defaultLinks${i}`}
@@ -106,7 +106,7 @@ const DetermineLinks: React.FC = ({
         {!shouldLogout &&
           !tokenData.empty &&
           Object.values(defaultData.defaultLoggediInLinks).map((value, i) => {
-            let Icon = value.icon;
+            let Icon: any = value.icon;
             return filterTab ? (
               ""
             ) : (
