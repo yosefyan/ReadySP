@@ -10,10 +10,10 @@ const Routes = () => {
   const { tokenData } = useContext<any>(DynamicContext);
   const routeLogic = (Comp: React.ComponentType) => {
     if (
-      linksMapping[tokenData.role][0].comp.includes(Comp.name) ||
-      defaultData.defaultLinks[0].comp.includes(Comp.name) ||
-      (tokenData.role !== "Ghost" &&
-        defaultData.defaultLoggediInLinks[0].comp.includes(Comp.name))
+      linksMapping[tokenData.role][0]?.comp.includes(Comp.name) ||
+      defaultData.defaultLinks[0]?.comp.includes(Comp.name) ||
+      (tokenData?.role !== "Ghost" &&
+        defaultData.defaultLoggediInLinks[0]?.comp.includes(Comp.name))
     ) {
       return <Comp />;
     } else {
