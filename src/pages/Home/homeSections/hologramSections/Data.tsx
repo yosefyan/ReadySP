@@ -11,7 +11,6 @@ import DynamicContext from "../../../../store/DynamicContext";
 import ROUTES from "../../../../routes/ROUTES";
 import { Link, useNavigate } from "react-router-dom";
 import { TDataComp } from "../../../../types/componentTypes";
-import { TCardConst } from "../../../../types/constantsTypes";
 
 const Data = ({
   card,
@@ -143,7 +142,7 @@ const Data = ({
               <Link
                 to={
                   index === 2
-                    ? `/#/${ROUTES.EDITCARD}/${card?._id}`
+                    ? `${ROUTES.EDITCARD}/${card?._id}`
                     : index === 0
                     ? `tel:${card?.phone}`
                     : ""
