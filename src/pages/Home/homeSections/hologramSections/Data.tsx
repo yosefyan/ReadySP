@@ -143,7 +143,7 @@ const Data = ({
               <Link
                 to={
                   index === 2
-                    ? `${ROUTES.EDITCARD}/${card?._id}`
+                    ? `/#/${ROUTES.EDITCARD}/${card?._id}`
                     : index === 0
                     ? `tel:${card?.phone}`
                     : ""

@@ -11,7 +11,7 @@ const NavLinkComp = ({ to, children, filterTab }: TNavigateLink) => {
         "from-orange-500/50",
         "to-blue-500/50"
       )} ${centerItem()} gap-4`}
-      to={to}>
+      to={`/#/${to}`}>
       {({ isActive }) => (
         <p
           className={`${
