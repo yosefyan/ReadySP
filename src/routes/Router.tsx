@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 import { routerData } from "./ROUTES";
-import { defaultData } from "../layout/linksLayout";
+import { defaultData } from "../comps/DetermineLinks";
 import DynamicContext from "../store/DynamicContext";
 import { linksMapping } from "../comps/DetermineLinks";
 
