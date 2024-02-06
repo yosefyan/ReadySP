@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { EToastifyStatuses } from "../../../types/helpersTypes";
 import PlanetsComp from "../../PlanetsComp";
 import dynamicPut from "../../../services/putRequests/dynamicPut";
-import { TFormComp } from "../../../types/componentTypes";
 import MainSquare from "./MainSquare";
 
 const RegisterSlider = ({
@@ -24,7 +23,7 @@ const RegisterSlider = ({
   submitData,
   reqType,
   shouldFloat = false,
-}: TFormComp) => {
+}: any) => {
   const navigate = useNavigate();
   const { message } = useJoiMessage("", "");
   const { Buttons } = registerData;

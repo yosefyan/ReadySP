@@ -5,6 +5,4 @@ export type TTokenData = {
   iat: number;
 };
 
-export type TMessage = {
-  [key: string]: string | unknown;
-};
+export type TMessage = any

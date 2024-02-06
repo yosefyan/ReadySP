@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { IconType } from "react-icons";
 
 export type TData = {
-  likes: string[];
+  likes?: any
 };
 
 export type TUsersData = {

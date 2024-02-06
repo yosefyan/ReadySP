@@ -1,7 +1,6 @@
 import { centerItem } from "../../utils/utils";
 import { RocketProgress, RegisterSlider } from "../../comps";
 import DisplayInputs from "./formSections/DisplayInputs";
-import { TFormComp } from "../../types/componentTypes";
 
 const FormComp = ({
   Icons,
@@ -17,7 +16,7 @@ const FormComp = ({
   reqType,
   isMap,
   shouldFloat,
-}: TFormComp) => {
+}: any) => {
   return (
     <div
       className={`${centerItem()} ${

@@ -65,18 +65,11 @@ export type TFormComp = {
   };
   setInputsState: React.Dispatch<React.SetStateAction<any>>;
   reqUrl: string;
-  reqType: {
-    request: string;
-    id: string;
-  };
+  reqType: any;
 
   inputsNormalizer: {};
-  inputsState: {
-    [key: string]: string | {};
-  };
-  serverStructure: {
-    [key: string]: string | {};
-  };
+  inputsState: any;
+  serverStructure: any
   requiredInputs: string[];
   isMap: boolean;
 };
@@ -121,8 +114,8 @@ export type TMessageComp = {
 };
 
 export type TMainSquare = {
-  inputsState: { [key: string]: string | {} };
-  value: string | {};
+  inputsState: any;
+  value: any
   currentData: TCreateCardData;
   i: number;
   Icon: IconType;

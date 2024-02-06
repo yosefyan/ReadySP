@@ -4,7 +4,6 @@ import { bgColors, textColors } from "../../../constants/colors";
 import { fstLetterUpper } from "../../../helpers";
 import useHidePassword from "../../../hooks/useHidePassword";
 import useJoiMessage from "../../../hooks/useJoiMessage";
-import { TMainSquare } from "../../../types/componentTypes";
 import {
   centerItem,
   iconStyles,
@@ -26,11 +25,11 @@ const MainSquare = ({
   setInputsState,
   setCheckBox,
   shouldFloat = false,
-}: TMainSquare) => {
+}: any) => {
   const { message } = useJoiMessage(value, theKey, currentData, requiredInputs);
 
   const { hidePassword, handleEyeStatus } = useHidePassword();
-  const { inputRefs } = useContext(DynamicContext);
+  const { inputRefs } = useContext<any>(DynamicContext);
 
   const checkEvenOdd = (style: { [key: string]: string }) => {
     const isEven = i % 2 === 0;

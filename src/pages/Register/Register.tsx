@@ -10,7 +10,7 @@ const Register = () => {
   const [registerInputs, setRegisterInputs] = useState<
     TInputsNormalizer["RegisterClient"]
   >(inputsNormalizer({}).RegisterClient);
-  const { checkbox } = useContext(DynamicContext);
+  const { checkbox } = useContext<any>(DynamicContext);
   const {
     first,
     middle,

@@ -1,7 +1,4 @@
-import { useContext, useEffect } from "react";
 import { Plans, Search, Sorting } from "./propertiesSections";
-import DynamicContext from "../../../store/DynamicContext";
-import useAutoLogin from "../../../hooks/useAutoLogin";
 
 const PropertiesTab = () => {
  

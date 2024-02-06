@@ -18,7 +18,7 @@ export type TSure = {
     route: string;
   };
   closed?: boolean;
-  data?: null | unknown;
+  data?: null | any;
 };
 
 export type TMainProvider = TAuthProvider & {
@@ -38,7 +38,7 @@ export type TMainProvider = TAuthProvider & {
   inputRefs: any;
   tokenData: TTokenDataContext;
   setTokenData: React.Dispatch<React.SetStateAction<TTokenDataContext>>;
-  state: unknown;
+  state: any;
   dispatch: React.DispatchWithoutAction;
   searchInput: string;
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;

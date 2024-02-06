@@ -39,19 +39,19 @@ export type TInputsNormalizer = TPermission & {
     email: string;
     password: string;
   };
-  RegisterClient: {};
-  RegisterServer: {};
-  CardClient: {};
-  CardServer: {};
+  RegisterClient: any;
+  RegisterServer: any;
+  CardClient: any;
+  CardServer: any;
   EditProfileClient: {
     [key: string]: string;
   };
   EditCardClient: any;
   EditProfileServer: {
-    name: {};
+    name: any;
     phone: string;
-    image: {};
-    address: {};
+    image: any;
+    address: any;
   };
 };
 
