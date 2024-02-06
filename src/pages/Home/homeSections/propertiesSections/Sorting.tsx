@@ -1,5 +1,10 @@
 import { textColors } from "../../../../constants/colors";
-import { buttonStyles, centerItem, gradient, titleStyles } from "../../../../utils/utils";
+import {
+  buttonStyles,
+  centerItem,
+  gradient,
+  titleStyles,
+} from "../../../../utils/utils";
 import { homeData } from "../../../../constants/homeData";
 import useReplaceWords from "../../../../hooks/useReplaceWords";
 import { memo, useContext } from "react";
@@ -7,7 +12,7 @@ import DynamicContext from "../../../../store/DynamicContext";
 
 const Sorting = () => {
   const { word, setWord } = useReplaceWords();
-  const { dispatch, data } = useContext<>(DynamicContext);
+  const { dispatch, data } = useContext<any>(DynamicContext);
 
   const handleSortClick = (i: number) => {
     dispatch({
