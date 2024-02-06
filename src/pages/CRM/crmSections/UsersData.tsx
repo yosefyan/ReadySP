@@ -61,7 +61,7 @@ const UsersData = () => {
           "from-orange-500/25",
           "to-blue-500/25"
         )}`}>
-        <div className={`grid flex-col grid-cols-1 lg:grid-cols-3 ${titleStyles()} p-4`}>
+        <div className={`grid flex-col grid-cols-2 lg:grid-cols-3 ${titleStyles()} p-4`}>
           {crmData.titles.map((title, i) => {
             let Icon = crmData.icons[i];
             return (
