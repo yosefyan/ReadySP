@@ -35,7 +35,7 @@ const FormComp = ({
           setInputsState={setInputsState}
           reqUrl={reqUrl}
           requiredInputs={requiredInputs}
-          shouldFloat
+          shouldFloat={shouldFloat}
         />
         <RocketProgress />
       </div>
