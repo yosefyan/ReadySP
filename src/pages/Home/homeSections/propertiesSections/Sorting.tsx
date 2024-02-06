@@ -7,7 +7,7 @@ import DynamicContext from "../../../../store/DynamicContext";
 
 const Sorting = () => {
   const { word, setWord } = useReplaceWords();
-  const { dispatch, data } = useContext<any>(DynamicContext);
+  const { dispatch, data } = useContext<>(DynamicContext);
 
   const handleSortClick = (i: number) => {
     dispatch({

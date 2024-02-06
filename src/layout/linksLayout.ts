@@ -21,7 +21,7 @@ const generateLinks = (
 ) => {
   return Array.from({ length: times }, (_, i) => ({
     to: route[i],
-    children: route[i]
+    children: route[i],
     comp,
     icon: icon[i],
   }));
