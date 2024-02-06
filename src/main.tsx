@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <HashRouter basename="/ReadySP">
+    <HashRouter >
       <App />
     </HashRouter>
   </React.StrictMode>
