@@ -61,7 +61,7 @@ const MainSquare = ({
           className={`${titleStyles("text-6xl")} ${labelStyles} ${
             theKey == "isBusiness" ? "up" : ""
           } ${inputsState[theKey] ? "up" : ""}`}>
-          {addName.charAt(0).toUpperCase() + addName.slice(1)}
+          {addName.charAt(0)?.toUpperCase() + addName.slice(1)}
           <span className="text-red-500/50">
             {requiredInputs.includes(theKey) ? "*" : ""}
           </span>

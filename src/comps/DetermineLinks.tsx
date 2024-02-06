@@ -82,7 +82,7 @@ const DetermineLinks: React.FC = ({
                 return (
                   <NavLinkComp key={`loggedInLinks${i}`} to={lin.to}>
                     <Icon />
-                    <span>{lin.children.replace("-", " ").toUpperCase()}</span>
+                    <span>{lin.children?.replace("-", " ").toUpperCase()}</span>
                   </NavLinkComp>
                 );
               })}
@@ -97,7 +97,7 @@ const DetermineLinks: React.FC = ({
                 className={`${centerItem()} w-full xl:w-[80%] h-full ${shadowEffects}`}>
                 <NavLinkComp filterTab={filterTab} to={defa.to}>
                   <Icon />
-                  {filterTab ? "" : <span>{defa.children.toUpperCase()}</span>}
+                  {filterTab ? "" : <span>{defa.children?.toUpperCase()}</span>}
                 </NavLinkComp>
               </div>
             );
@@ -114,7 +114,7 @@ const DetermineLinks: React.FC = ({
                 <ListComp listName={"USER LIST"}>
                   <NavLinkComp key={`roleLinks${i}`} to={value.to}>
                     <Icon />
-                    <span>{value.children.toUpperCase()}</span>
+                    <span>{value.children?.toUpperCase()}</span>
                   </NavLinkComp>
                   <a
                     onClick={handleLogout}

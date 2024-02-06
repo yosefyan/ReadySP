@@ -98,7 +98,7 @@ const DisplayInputs = ({
                   )} ${
                     i % 2 == 0 ? textColors.SECONDARY : textColors.PRIMARY
                   }`}>
-                  {key.toUpperCase()}
+                  {key?.toUpperCase()}
                   <span className="text-red-500">
                     {Array.isArray(requiredInputs) &&
                     requiredInputs.includes(key)

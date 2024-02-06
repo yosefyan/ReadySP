@@ -3,7 +3,7 @@ export const checkSentenceLength = (aString: string): number => {
 };
 
 export const fstLetterUpper = (aString: string): string => {
-  return aString.charAt(0).toUpperCase() + aString.slice(1);
+  return aString.charAt(0)?.toUpperCase() + aString.slice(1);
 };
 
 export const handleScroll = (
