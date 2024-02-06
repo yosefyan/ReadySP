@@ -72,7 +72,7 @@ const RegisterSlider = ({
           toastifyHelper({
             status: EToastifyStatuses.error,
             message:
-              error.response.data?.replace("Joi Error:", "") || message.joiError,
+              error.response.data.replace("Joi Error:", "") || message.joiError,
           });
         }
       }

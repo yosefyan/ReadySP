@@ -82,7 +82,7 @@ const DetermineLinks: React.FC = ({
                 return (
                   <NavLinkComp key={`loggedInLinks${i}`} to={lin.to}>
                     <Icon />
-                    <span>{lin.children?.replace("-", " ").toUpperCase()}</span>
+                    <span>{lin.children.replace("-", " ").toUpperCase()}</span>
                   </NavLinkComp>
                 );
               })}
