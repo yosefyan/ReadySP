@@ -4,6 +4,7 @@ import { routerData } from "./ROUTES";
 import { defaultData } from "../layout/linksLayout";
 import DynamicContext from "../store/DynamicContext";
 import { linksMapping } from "../comps/DetermineLinks";
+import DynamicRoleMiddleware from "../middlewares/DynamicRoleMiddleware";
 
 const Routes = () => {
   const { tokenData } = useContext<any>(DynamicContext);
@@ -17,9 +18,9 @@ const Routes = () => {
       return <Comp />;
     } else {
       return (
-        <Comp />
-        // <DynamicRoleMiddleware>
-        // </DynamicRoleMiddleware>
+        <DynamicRoleMiddleware>
+          <Comp />
+        </DynamicRoleMiddleware>
       );
     }
   };
@@ -29,7 +30,7 @@ const Routes = () => {
       (Comp: React.ComponentType, i: number): RouteObject => ({
         path: routerData.paths[i].includes("edit")
           ? `${routerData.paths[i]}/:cardId`
-          : routerData.paths[i],
+          : `${routerData.paths[i]}`,
         element: routeLogic(Comp),
       })
     )
