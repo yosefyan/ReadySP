@@ -15,7 +15,7 @@ import ROUTES from "../routes/ROUTES";
 import useAutoLogin from "../hooks/useAutoLogin";
 import ListComp from "./ListComp";
 import { TTokenDataContext } from "../types/contextTypes";
-import { LinkItem, TDetermineLinks } from "../types/linkTypes";
+import {  TDetermineLinks } from "../types/linkTypes";
 
 export const linksMapping: any = {
   Ghost: welcomeLinks,
@@ -79,7 +79,6 @@ const DetermineLinks: React.FC = ({
             {roleChecker() &&
               whichLinks?.map((lin: any, i: number) => {
                 let Icon = lin.icon;
-                console.log(lin.children)
                 return (
                   <NavLinkComp key={`loggedInLinks${i}`} to={lin.to}>
                     <Icon />
@@ -91,7 +90,6 @@ const DetermineLinks: React.FC = ({
         )}
         <div className={`w-full ${centerItem()} flex-col lg:flex-row`}>
           {Object.values(defaultData.defaultLinks).map((defa, i) => {
-            console.log('defa', defa.to)
             let Icon: any = defa.icon;
             return (
               <div
@@ -108,7 +106,6 @@ const DetermineLinks: React.FC = ({
         {!shouldLogout &&
           !tokenData.empty &&
           Object.values(defaultData.defaultLoggediInLinks).map((value, i) => {
-            console.log('default logged in',)
             let Icon: any = value.icon;
             return filterTab ? (
               ""

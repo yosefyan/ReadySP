@@ -59,10 +59,6 @@ const CardPreview = () => {
           text: "Close",
           navigate: ROUTES.HOME,
         }}
-        //    submitData={{
-        //      message: "Successfully created the card.",
-        //      navigate: ROUTES.MYCARDS,
-        //    }}
         requiredInputs={[""]}
         serverStructure={{ empty: "" }}
         inputsNormalizer={inputsNormalizer}
