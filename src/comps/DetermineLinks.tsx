@@ -27,7 +27,7 @@ const DetermineLinks: React.FC = ({
   customHeight,
   filterTab,
 }: TDetermineLinks) => {
-  const [whichLinks, setWhichLinks] = useState<LinkItem[]>([]);
+  const [whichLinks, setWhichLinks] = useState<any>([]);
   const finishedLoading = useAutoLogin();
   const { tokenData, setTokenData, shouldLogout, setShouldLogout } =
     useContext<any>(DynamicContext);
