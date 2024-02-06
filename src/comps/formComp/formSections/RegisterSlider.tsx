@@ -36,7 +36,7 @@ const RegisterSlider = ({
     setCheckBox,
     heightContainer,
     inputRefs,
-  } = useContext(DynamicContext);
+  } = useContext<any>(DynamicContext);
 
   useEffect(() => {
     inputRefs[0].current?.focus();

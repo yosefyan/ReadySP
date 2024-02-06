@@ -14,7 +14,7 @@ import { IoIosLogOut } from "../constants/iconsData";
 import ROUTES from "../routes/ROUTES";
 import useAutoLogin from "../hooks/useAutoLogin";
 import ListComp from "./ListComp";
-import { TMainProvider, TTokenDataContext } from "../types/contextTypes";
+import { TTokenDataContext } from "../types/contextTypes";
 import { LinkItem, TDetermineLinks } from "../types/linkTypes";
 
 export const linksMapping: any = {
@@ -30,7 +30,7 @@ const DetermineLinks: React.FC = ({
   const [whichLinks, setWhichLinks] = useState<LinkItem[]>([]);
   const finishedLoading = useAutoLogin();
   const { tokenData, setTokenData, shouldLogout, setShouldLogout } =
-    useContext<TMainProvider>(DynamicContext);
+    useContext<any>(DynamicContext);
 
   const navigate = useNavigate();
 
