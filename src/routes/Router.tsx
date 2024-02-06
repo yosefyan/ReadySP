@@ -19,9 +19,9 @@ const Routes = () => {
       return <Comp />;
     } else {
       return (
-        <DynamicRoleMiddleware>
-          <Comp />
-        </DynamicRoleMiddleware>
+        <Comp />
+        // <DynamicRoleMiddleware>
+        // </DynamicRoleMiddleware>
       );
     }
   };

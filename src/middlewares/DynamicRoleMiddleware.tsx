@@ -5,12 +5,11 @@ import { Navigate } from "react-router-dom";
 import ROUTES from "../routes/ROUTES";
 import toastifyHelper from "../helpers/toastifyHelper";
 import { EToastifyStatuses } from "../types/helpersTypes";
-import { TMainProvider } from "../types/contextTypes";
 import { TTypicalChildren } from "../types/componentTypes";
 
 const DynamicRoleMiddleware = ({ children }: TTypicalChildren) => {
   const { finishedLoading } = useAutoLogin();
-  const { tokenData } = useContext<TMainProvider>(DynamicContext);
+  const { tokenData } = useContext<any>(DynamicContext);
 
   if (finishedLoading) {
     toastifyHelper({
