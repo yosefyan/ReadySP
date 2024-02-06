@@ -91,6 +91,7 @@ const DetermineLinks: React.FC = ({
         )}
         <div className={`w-full ${centerItem()} flex-col lg:flex-row`}>
           {Object.values(defaultData.defaultLinks).map((defa, i) => {
+            console.log('defa', defa.to)
             let Icon: any = defa.icon;
             return (
               <div
@@ -107,6 +108,7 @@ const DetermineLinks: React.FC = ({
         {!shouldLogout &&
           !tokenData.empty &&
           Object.values(defaultData.defaultLoggediInLinks).map((value, i) => {
+            console.log("default logged in", value.to);
             let Icon: any = value.icon;
             return filterTab ? (
               ""
