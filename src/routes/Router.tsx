@@ -29,7 +29,7 @@ const Routes = () => {
       (Comp: React.ComponentType, i: number): RouteObject => ({
         path: routerData.paths[i].includes("edit")
           ? `${routerData.paths[i]}/:cardId`
-          : routerData.paths[i],
+          : `/#/${routerData.paths[i]}`,
         element: routeLogic(Comp),
       })
     )
