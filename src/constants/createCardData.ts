@@ -28,6 +28,7 @@ const createCardData: TCreateCardData = {
     "city",
     "street",
     "houseNumber",
+    "zip"
   ],
   Icons: [
     MdOutlineTitle,
@@ -69,8 +70,8 @@ const createCardData: TCreateCardData = {
       min: 1,
     },
     zip: {
-      isRequired: false,
       whatOpening: "number",
+      max: 1000000,
     },
     otherInputs: [
       "title",
