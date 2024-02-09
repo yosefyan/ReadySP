@@ -1,11 +1,10 @@
-import { useState, useReducer, useContext, useRef, Reducer } from "react";
+import { useState, useReducer, useContext, useRef } from "react";
 import DynamicContext from "./DynamicContext";
 import { homeReducer, homeInitialState } from "../reducers/homeReducer";
 import { TTypicalChildren } from "../types/componentTypes";
 import inputsNormalizer from "../constants/inputsNormalizer";
 import { TInputsNormalizer } from "../types/PagesTypes/inputsNormalizerTypes";
 import { TSure } from "../types/contextTypes";
-import { TInitialReducerData, TPayload } from "../types/reducerTypes";
 
 const HomeProvider = ({ children }: TTypicalChildren) => {
   const [filteredData, setFilteredData] = useState([]);
