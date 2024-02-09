@@ -19,7 +19,7 @@ const HomeProvider = ({ children }: TTypicalChildren) => {
   const [registerInputs, setRegisterInputs] = useState<
     TInputsNormalizer["RegisterClient"]
   >(inputsNormalizer({}).RegisterClient);
-  const { tokenData } = useContext(DynamicContext);
+  const { tokenData } = useContext<any>(DynamicContext);
   const inputRefs = Object.values(registerInputs).map(() => useRef(null));
   const [cards, setCards] = useState([]);
   const [sure, setSure] = useState<TSure>({
