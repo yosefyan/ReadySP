@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import AreYouSure from "../../comps/AreYouSure";
+import AreYouSure from "../../comps/AreYouSure.tsx";
 import serverRoutes from "../../routes/serverRoutes";
 import { centerItem } from "../../utils/utils";
 import Holograms from "./homeSections/Holograms";

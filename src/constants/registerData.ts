@@ -93,6 +93,7 @@ const registerData: TRegisterData = {
     },
     zip: {
       whatOpening: "number",
+      max: 1000000
     },
     houseNumber: {
       whatOpening: "number",

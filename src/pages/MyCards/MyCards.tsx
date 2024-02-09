@@ -2,7 +2,7 @@ import TV from "./myCardsSections/TV";
 import Controller from "./myCardsSections/Controller";
 import { centerItem } from "../../utils/utils";
 import { useContext, useState } from "react";
-import AreYouSure from "../../comps/AreYouSure";
+import AreYouSure from "../../comps/AreYouSure.tsx";
 import DynamicContext from "../../store/DynamicContext";
 
 const MyCards = () => {
