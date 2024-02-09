@@ -1,6 +1,8 @@
+import { titleStyles } from "../../utils/utils"
+
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className={titleStyles('text-5xl')}>NotFound</div>
   )
 }
 
