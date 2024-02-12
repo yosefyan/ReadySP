@@ -5,7 +5,7 @@ import { triangleStyles } from "../utils/utils";
 const TriangleComp: React.FC<{ children: ReactNode, shouldDown: boolean }> = ({ children, shouldDown }) => {
   return (
     <div
-      className={`buttons  ${centerItem()} ${triangleStyles(
+      className={`buttons ${centerItem()} ${triangleStyles(
         shouldDown
       )} flex-col z-50`}>
       {children}

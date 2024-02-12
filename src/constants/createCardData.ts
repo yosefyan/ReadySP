@@ -28,7 +28,7 @@ const createCardData: TCreateCardData = {
     "city",
     "street",
     "houseNumber",
-    "zip"
+    "zip",
   ],
   Icons: [
     MdOutlineTitle,

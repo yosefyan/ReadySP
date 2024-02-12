@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { EyePassword, MessageComp } from "../..";
 import { bgColors, textColors } from "../../../constants/colors";
 import { fstLetterUpper } from "../../../helpers";
@@ -28,6 +28,9 @@ const MainSquare = ({
 }: any) => {
   const { message } = useJoiMessage(value, theKey, currentData, requiredInputs);
 
+  useEffect(() => {
+    setCheckBox(false);
+  }, []);
   const { hidePassword, handleEyeStatus } = useHidePassword();
   const { inputRefs } = useContext<any>(DynamicContext);
 

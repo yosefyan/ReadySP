@@ -39,7 +39,23 @@ const RegisterSlider = ({
 
   useEffect(() => {
     inputRefs[0].current?.focus();
+    setScrollAmount(0);
   }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Tab") {
+        setScrollAmount((prev) => prev + heightContainer.current.clientHeight);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   useEffect(() => {
     let maxHeight =
       (Icons.length - 1) * (heightContainer.current?.clientHeight || 0);
@@ -49,6 +65,7 @@ const RegisterSlider = ({
       top: scrollAmount,
     });
   }, [scrollAmount]);
+
   let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formElement = e.currentTarget as HTMLFormElement;
@@ -126,10 +143,10 @@ const RegisterSlider = ({
               setCheckBox={setCheckBox}
               shouldFloat={shouldFloat}
             />
-            <TriangleComp shouldDown={false}>
+            <TriangleComp shouldFloat={shouldFloat} shouldDown={false}>
               {percentage >= 100 ? (
                 <input
-                  className="text-4xl w-[25vw] p-8 text-white/25 font-black tracking-widest translate-y-[-7vh] cursor-pointer"
+                  className="text-2xl lg:text-4xl w-[25vw] p-0 lg:p-8 text-white/25 font-black tracking-widest translate-y-[-7vh] cursor-pointer"
                   type="submit"
                   value={`${shouldFloat ? "END" : "SUBMIT"}`}
                   disabled={false}

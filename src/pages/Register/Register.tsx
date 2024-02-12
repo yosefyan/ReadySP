@@ -49,7 +49,7 @@ const Register = () => {
           password,
           imageData: { url, alt },
           addressData: { state, country, city, street, houseNumber, zip },
-          checkbox,
+          isBusiness: checkbox,
         }).RegisterServer
       }
       reqType={"POST"}

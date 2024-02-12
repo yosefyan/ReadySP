@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { genericValidation } from "../validation/genericValidation";
 import createCardData from "../constants/createCardData";
 import { TCreateCardData } from "../types/constantsTypes";
 import { TMessage } from "../types/customHooksTypes";
+import DynamicContext from "../store/DynamicContext";
 
 const useJoiMessage = (
   theValue: string,
@@ -23,14 +24,18 @@ const useJoiMessage = (
 
     let { error, value } = joiResponse;
     let joiError = error?.details[0].message;
-    let joiSuccess = key === "password" ? "The password" : value?.Input;
+    let joiSuccess =
+      key === "password"
+        ? "The password"
+        : key === "isBusiness"
+        ? 'Your option'
+        : value?.Input;
 
     setMessage({
       joiSuccess,
       joiError,
     });
   }, [theValue, key]);
-
 
   return { message, setMessage };
 };

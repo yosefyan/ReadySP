@@ -99,7 +99,7 @@ const registerData: TRegisterData = {
       whatOpening: "number",
     },
     isBusiness: {
-      whatOpening: undefined,
+      whatOpening: 'boolean',
     },
     middle: {
       isRequired: false,

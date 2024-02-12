@@ -29,6 +29,7 @@ const inputsNormalizer = ({
   street = "",
   houseNumber = "",
   zip = "",
+  isBusiness
 }): TInputsNormalizer => {
   const nameFormat: TName = {
     first: "",
@@ -94,7 +95,7 @@ const inputsNormalizer = ({
       address: {
         ...addressData,
       },
-      ...permissionsFormat,
+      isBusiness,
     },
     CardClient: {
       ...inlineCardFormat,

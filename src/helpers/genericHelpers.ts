@@ -24,6 +24,7 @@ export const handleScroll = (
       : direction === "back"
       ? -height
       : height;
+
   setScrollAmount((prev) => (prev + result <= 0 ? 0 : prev + result));
   if (shouldFocus) {
     let timeout = setTimeout(
