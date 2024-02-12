@@ -16,7 +16,7 @@ ReadySP is a platform designed for businesses to create, share, and explore busi
 
 ### Creating a Business Card
 
-1. Sign in or create an account based on your role.
+1. You must own a business account in order to create a business card.
 2. Navigate to the "Create Card" section.
 3. Fill in the required details and customize your card to represent your business effectively.
 4. Save the changes to publish your card.
