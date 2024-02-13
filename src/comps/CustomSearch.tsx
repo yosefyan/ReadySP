@@ -1,4 +1,4 @@
-import { memo, useContext } from "react";
+import { memo, useContext, useEffect } from "react";
 import { bgColors, textColors } from "../constants/colors";
 import { homeData } from "../constants/homeData";
 import {
@@ -83,7 +83,7 @@ const CustomSearch: React.FC<TCustomSearch> = ({
           <FaSearch />
         </i>
         <input
-          value={searchInput}
+          value={searchInput || ""}
           onChange={handleInputChange}
           placeholder={`Search by ${searchBy || "title"}...`}
           className={`${inputStyles(

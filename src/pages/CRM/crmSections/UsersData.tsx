@@ -16,16 +16,32 @@ import serverRoutes from "../../../routes/serverRoutes";
 import Loading from "../../Loading/Loading";
 import ListComp from "../../../comps/ListComp";
 import { linksMapping } from "../../../comps/DetermineLinks";
-import { TCurrentRole, TUserSearchResult } from "../../../types/PagesTypes/crmTypes";
+import {
+  TCurrentRole,
+  TUserSearchResult,
+} from "../../../types/PagesTypes/crmTypes";
 import { TSure } from "../../../types/contextTypes";
 
 const UsersData = () => {
-  const { searchInput, userSearchResult, dispatch, setSure } =
+  const { searchInput, userSearchResult, dispatch, setSure, sure } =
     useContext<any>(DynamicContext);
   const [currentRole, setCurrentRole] = useState<TCurrentRole>({
     role: "",
     index: null,
   });
+
+  useEffect(() => {
+    const refresh = async () => {
+      try {
+        const { data } = await dynamicGet(serverRoutes.get.getAllUsers);
+        dispatch({
+          type: "SET_USERS",
+          payload: { usersData: data },
+        });
+      } catch (error) {}
+    };
+    refresh();
+  }, [searchInput]);
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -35,13 +51,19 @@ const UsersData = () => {
           type: "SET_USERS",
           payload: { usersData: data },
         });
-        dispatch({
-          type: "SEARCH_USER",
-          payload: {
-            searchInput: "",
-            usersData: data,
-          },
-        });
+        if (sure.closed) {
+          dispatch({
+            type: "SET_USERS",
+            payload: { usersData: data },
+          });
+          dispatch({
+            type: "SEARCH_USER",
+            payload: {
+              searchInput: "",
+              usersData: data,
+            },
+          });
+        }
       } catch (error) {
         toastifyHelper({
           status: EToastifyStatuses.error,
@@ -51,7 +73,7 @@ const UsersData = () => {
       }
     };
     getAllUsers();
-  }, []);
+  }, [sure]);
 
   return (
     <div className={`w-full lg:w-[65%] h-full ${centerItem()}`}>
@@ -61,7 +83,8 @@ const UsersData = () => {
           "from-orange-500/25",
           "to-blue-500/25"
         )}`}>
-        <div className={`grid flex-col grid-cols-2 lg:grid-cols-3 ${titleStyles()} p-4`}>
+        <div
+          className={`grid flex-col grid-cols-2 lg:grid-cols-3 ${titleStyles()} p-4`}>
           {crmData.titles.map((title, i) => {
             let Icon = crmData.icons[i];
             return (
@@ -82,7 +105,7 @@ const UsersData = () => {
           {userSearchResult?.length === 0 ? (
             <Loading searchInput={searchInput || "Your Username"} />
           ) : (
-            userSearchResult?.map((user:TUserSearchResult, index: number) => {
+            userSearchResult?.map((user: TUserSearchResult, index: number) => {
               return (
                 <div
                   key={`usersDataFull${index}`}

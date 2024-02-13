@@ -56,7 +56,7 @@ const AreYouSure: React.FC = () => {
     <div
       className={`rounded-2xl ${
         sure.closed ? "scale-0" : "scale-1"
-      } shadow transition-all shadow-black w-[60vw] h-[50vh] ${centerItem(
+      } shadow transition-all shadow-black w-[80vw] lg:w-[60vw] h-[50vh] ${centerItem(
         "justify-evenly"
       )} flex-col ${gradient(false, "from-orange-500/50", "to-blue-500/50")}`}>
       <h1
@@ -70,7 +70,7 @@ const AreYouSure: React.FC = () => {
           return (
             <div
               onClick={() => handleConfirm(i)}
-              className={`${centerItem()} cursor-pointer hover:scale-95 transition-all w-[40%] shadow-2xl shadow-black ${titleStyles()} p-4 rounded-2xl gap-4 h-[80%] ${
+              className={`${centerItem()} cursor-pointer hover:scale-95 transition-all w-[80%] lg:w-[40%] shadow-2xl shadow-black ${titleStyles()} p-4 rounded-2xl gap-4 h-[80%] ${
                 i === 0 ? "bg-red-500/50" : "bg-green-500/50"
               }`}
               key={`areYouSureButtons${i}`}>

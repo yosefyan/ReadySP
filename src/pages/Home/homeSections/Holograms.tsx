@@ -14,8 +14,15 @@ import { TCardConst } from "../../../types/constantsTypes";
 import { TUserSearchResult } from "../../../types/PagesTypes/crmTypes";
 
 const Holograms = ({ url, full, shouldFilter }: THolograms) => {
-  const { setSure, setCards, dispatch, searchInput, searchResult, tokenData } =
-    useContext<any>(DynamicContext);
+  const {
+    setSure,
+    sure,
+    setCards,
+    dispatch,
+    searchInput,
+    searchResult,
+    tokenData,
+  } = useContext<any>(DynamicContext);
   const [shouldShow, setShouldShow] = useState<number | null>(null);
   const [shouldLike, setShouldLike] = useState<any>([{}]);
 
@@ -23,8 +30,24 @@ const Holograms = ({ url, full, shouldFilter }: THolograms) => {
     const fetchCards = async () => {
       try {
         const { data } = await dynamicGet(url);
+        dispatch({ type: "SET_CARDS", payload: { data, liked: true } });
+         shouldFilter &&
+           dispatch({
+             type: "FAV_CARD_INITIAL",
+             payload: { data, userId: tokenData.user._id },
+           });
+      } catch (error) {}
+    };
+    fetchCards();
+  }, [sure, searchInput]);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const { data } = await dynamicGet(url);
 
         dispatch({ type: "SET_CARDS", payload: { data, liked: true } });
+
         shouldFilter &&
           dispatch({
             type: "FAV_CARD_INITIAL",
@@ -33,16 +56,17 @@ const Holograms = ({ url, full, shouldFilter }: THolograms) => {
 
         dispatch({ type: "SEARCH", payload: { searchInput: "", data } });
         setCards(data);
-      } catch (error) {}
+      } catch (error) {
+        toastifyHelper({
+          status: EToastifyStatuses.error,
+          message: "Could not fetch cards.",
+        });
+      }
     };
     fetchCards();
   }, []);
 
-  const handleLikeCard = async (
-    cardId: string,
-    card: TCardConst,
-    i: number
-  ) => {
+  const handleLikeCard = async (cardId: string, card: TCardConst) => {
     try {
       const res = await dynamicPatch(`${serverRoutes.patch.likeCard}${cardId}`);
       setShouldLike(() => {
