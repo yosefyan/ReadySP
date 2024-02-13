@@ -50,15 +50,15 @@ const LoginBox = () => {
       ) {
         toastifyHelper({
           status: EToastifyStatuses.error,
-          message: "Your account is blocked. Please try again later.",
+          message: "Your access has been blocked. Please try again later.",
         });
         return;
       }
       if (attempts < 3) {
-        if (emailToken && emailToken === email) {
+        if (emailToken) {
           toastifyHelper({
             status: EToastifyStatuses.error,
-            message: "Your account has been blocked, please try again later.",
+            message: "Your access has been blocked, please try again later.",
           });
         } else {
           let { data } = await dynamicPostRequest(
@@ -75,7 +75,7 @@ const LoginBox = () => {
       } else {
         toastifyHelper({
           status: EToastifyStatuses.error,
-          message: "Your account has been blocked, please try again later.",
+          message: "Your access has been blocked, please try again later.",
         });
         const blockExpirationDate = new Date();
         blockExpirationDate.setHours(blockExpirationDate.getHours() + 24);
@@ -87,6 +87,7 @@ const LoginBox = () => {
       }
     } catch (error) {
       setAttempts((prev) => prev + 1);
+
       toastifyHelper({
         status: EToastifyStatuses.error,
         message: "Invalid email or password.",
